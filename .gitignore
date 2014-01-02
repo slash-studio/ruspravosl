@@ -1,0 +1,12 @@
+/.idea/
+.directory
+/phpmyadmin/
+includes/user_consts.php
+templates_c/
+cache/
+includes/uploads/
+*~
+*.ajax
+user_consts.php
+pma/
+*.log
