@@ -1,0 +1,37 @@
+#top_block h1 {
+	font-size: 180%;
+	font-family: Georgia;
+	margin-bottom: 20px;
+}
+
+#top_block {
+	text-align: center;
+}
+
+#top_block form input {
+	width: 190px;
+	float: right;
+}
+
+#top_block form label {
+	margin-right: 10px;
+	position: relative;
+	top: 3px;
+}
+
+#top_block form > div {
+	width: 300px;
+	margin: 0 auto;
+	text-align: right;
+}
+
+#top_block form div div {
+	height: 30px;
+	text-align: right;
+}
+
+#top_block form button {
+	padding: 7px 20px;
+	min-width: 100px;
+	margin: 20px 5px 0;
+}

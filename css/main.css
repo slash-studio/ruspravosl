@@ -14,3 +14,23 @@ a {
 	color: #733333;
     text-decoration: underline;
 }
+
+#top_block {
+	margin-top: 35px;
+}
+
+input {
+	padding: 3px 5px;
+	border: 1px #bbb solid;
+}
+
+button {
+	cursor: pointer;
+	background: #7e5723;
+	border: 0;
+	color: white;
+}
+
+button:hover {
+	background: #6a4018;
+}
