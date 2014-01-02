@@ -1,0 +1,29 @@
+header {
+	height: 280px;
+}
+
+header nav.left {
+	float: left;
+}
+
+header nav.right {
+	float: right;
+}
+
+header nav li:first-child a {
+	padding-left: 0;
+}
+
+header nav li:last-child a {
+	padding-right: 0;
+}
+
+header nav li {
+	display: inline-block;
+}
+
+header nav li a {
+	display: inline-block;
+	padding: 20px 20px;
+	font-size: 150%;
+}
