@@ -12,7 +12,7 @@
 			<div>
 				<div><label for="login">Логин:</label><input id="login" name="login" /></div>
 				<div><label for="pass">Пароль:</label><input id="pass" name="pass" type="password" /></div>
-				<button id="enter">Войти</button><button id="reg">Зарегистрироваться</button>
+				<button id="enter">Войти</button><button id="reg" type="button" onClick="javascript:location.assign('/includes/registration.php')">Зарегистрироваться</button>
 			</div>
 		</form>
 	</div>
