@@ -16,8 +16,10 @@
 			<ul>
 				<li>
 					<a href="#" class="block"><img src="/images/min1.jpg" /></a><button class="x">x</button>
+					<a href="#" class="likes">9</a>
 				</li><li>
 					<a href="#" class="block"><img src="/images/min2.jpg" /></a><button class="x">x</button>
+					<a href="#" class="likes">1</a>
 				</li><li>
 					
 				</li>
