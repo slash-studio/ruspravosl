@@ -7,7 +7,7 @@
 	margin-right: 35px;
 }
 
-#news h1, #pop_works h1 {
+#news h1, .imgs h1 {
 	font-size: 180%;
 	font-family: Georgia;
 	margin-bottom: 20px;
@@ -27,55 +27,15 @@
 	font-size: 110%;
 }
 
-#pop_works {
+.imgs {
 	clear: both;
 	margin-top: 35px;
 }
 
-#pop_works h1 {
+.imgs h1 {
 	font-size: 160%;
 }
 
-#pop_works ul li:first-child {
-	margin-left: 0;
-}
-
-#pop_works ul li:last-child {
-	margin-right: 0;
-}
-
-#pop_works ul li {
-	margin: 0 20px;
-	display: inline-block;
-	vertical-align: top;
+.imgs ul li {
 	text-align: center;
-}
-
-#pop_works ul li a.block {
-	display: block;
-	width: 210px;
-	height: 150px;
-	background: #ddd;
-}
-
-#pop_works ul li a.user {
-	display: block;
-	font-style: italic;
-	margin-top: 7px;
-	color: black;
-	width: 210px;
-	margin-bottom: 7px;
-}
-
-#pop_works ul li a.likes {
-	padding-left: 14px;
-	display: inline-block;
-	height: 15px;
-	color: #c42d3f;
-	text-decoration: none;
-	background: url('/images/like.png') no-repeat left center;
-}
-
-#pop_works ul li img {
-	height: 150px;
 }

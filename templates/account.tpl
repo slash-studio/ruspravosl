@@ -3,6 +3,7 @@
 	<link href="/css/header.css" rel="stylesheet" />
 	<link href="/css/footer.css" rel="stylesheet" />
 	<link href="/css/account.css" rel="stylesheet" />
+	<link href="/css/images.css" rel="stylesheet" />
 {/block}
 {block name='div.main'}
 	{include file="header.tpl"}
@@ -11,7 +12,7 @@
 		<span class="info">Логин: <b>Dada1</b></span>
 		<span class="info">Имя: <b>Владислав Тертышный</b></span>
 		<span class="info">Адрес: <b>г. Владивосток, ул. Пологая 66 к. 5</b></span>
-		<div id="imgs">
+		<div class="imgs">
 			<h2>Загруженные фотографии</h2>
 			<ul>
 				<li>

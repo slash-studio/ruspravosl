@@ -3,6 +3,7 @@
 	<link href="/css/header.css" rel="stylesheet" />
 	<link href="/css/footer.css" rel="stylesheet" />
 	<link href="/css/index.css" rel="stylesheet" />
+	<link href="/css/images.css" rel="stylesheet" />
 {/block}
 {block name='div.main'}
 	{include file="header.tpl"}
@@ -17,7 +18,7 @@
 				<button id="start" type="button" onClick="javascript:location.assign('/includes/login.php')">Принять участие!</button>
 			</div>
 		</section>
-		<section id="pop_works">
+		<section class="imgs">
 			<h1>Популярные работы</h1>
 			<ul>
 				<li>

@@ -1,72 +1,57 @@
-#news {
-	min-height: 273px;
-}
-
-#news > img {
+aside {
+	font-size: 110%;
+	border-right: 2px #ccc solid;
+	width: 320px;
+	margin: 35px 40px 0 0;
 	float: left;
-	margin-right: 35px;
+	min-height: 300px;
 }
 
-#news h1, #pop_works h1 {
-	font-size: 180%;
+aside ul ul {
+	margin: 5px 0 12px 20px;
+	display: none;
+}
+
+aside div.arrow {
+    background: url("/images/menu_sprite.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 5px;
+    margin: 8px 0 0 5px;
+    vertical-align: top;
+    width: 11px;
+}
+
+aside li a.open div.arrow {
+    background: url("/images/menu_sprite.png") no-repeat scroll 0 -5px transparent;
+}
+
+#top_block {
+	margin-left: 350px;
+}
+
+.imgs h1, .imgs h2 {
 	font-family: Georgia;
-	margin-bottom: 20px;
 }
-#news p {
+
+.imgs h1, .imgs h2, .imgs h3 {
+	font-size: 150%;
+	margin-bottom: 10px;
 	font-style: italic;
+}
+
+.imgs h2 {
+	font-size: 130%;
+}
+
+.imgs h3 {
 	font-size: 110%;
+	margin-bottom: 30px;
 }
 
-#news div {
-	margin-left: 435px;
-}
-
-#start {
-	padding: 10px 20px;
-	margin-top: 20px;
-	font-size: 110%;
-}
-
-#pop_works {
-	clear: both;
-	margin-top: 35px;
-}
-
-#pop_works h1 {
-	font-size: 160%;
-}
-
-#pop_works ul li:first-child {
+.imgs ul li:nth-child(3n-2) {
 	margin-left: 0;
 }
 
-#pop_works ul li:last-child {
-	margin-right: 0;
-}
-
-#pop_works ul li {
-	margin: 0 20px;
-	display: inline-block;
-	vertical-align: top;
-}
-
-#pop_works ul li a.block {
-	display: block;
-	width: 210px;
-	text-align: center;
-	height: 150px;
-	background: #ddd;
-}
-
-#pop_works ul li a.user {
-	display: block;
-	text-align: center;
-	font-style: italic;
-	margin-top: 7px;
-	color: black;
-	width: 210px;
-}
-
-#pop_works ul li img {
-	height: 150px;
+#top_block.imgs ul li {
+	margin-bottom: 20px;
 }
