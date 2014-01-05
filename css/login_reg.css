@@ -35,3 +35,11 @@
 	min-width: 100px;
 	margin: 20px 5px 0;
 }
+
+#success_reg {
+	width: 700px;
+	margin: 0 auto;
+	color: green;
+	font-size: 150% !important;
+	font-family: Calibri !important;
+}
