@@ -4,11 +4,17 @@ if(!isset($_SESSION)) {
 }
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/settings.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/constants.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/smarty/libs/Smarty.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.DataHandling.php';
+
+require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/reg_auth.inc';
+
 
 $smarty = new TSmarty();
 $smarty->force_compile = true;
 
-//$request = explode('/', substr($_SERVER['REQUEST_URI'], 1));
+$data_h = new DataHandling();
 
+$smarty->assign('isLogin', Authentification::CheckCredentials());
 ?>

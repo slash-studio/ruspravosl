@@ -11,6 +11,18 @@ switch ($request[0]) {
    case 'login':
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/login.php';      
       break;
+      
+   case 'registration':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/registration.php';      
+      break;
+
+   case 'profile':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/account.php';
+      break;
+
+   case 'all_works':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/all_works.php';
+      break;
 }
 
 ?>

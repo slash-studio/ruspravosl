@@ -1,5 +1,6 @@
 <link href="/css/style.css" rel="stylesheet" />
 <script src="/js/jquery.js"></script>
+<script src="/js/jquery.logout.js"></script>
 <script src="/js/dropdown_blocks.js"></script>
 <script>
 {literal}

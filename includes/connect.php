@@ -1,6 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/user_consts.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Field.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/exception.inc';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/constants.php';
 
