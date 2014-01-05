@@ -10,6 +10,19 @@
 	margin: 20px 0;
 }
 
+#top_block h3 {
+	font-size: 130%;
+	font-family: Georgia;
+	margin: 20px 0;
+	font-style: italic;
+}
+
+#top_block h4 {
+	font-size: 110%;
+	font-style: italic;
+	margin: 20px 0;
+}
+
 #top_block span.info {
 	font-size: 110%;
 	display: block;
@@ -25,16 +38,18 @@
 	margin: 35px auto 0;
 }
 
-#upload {
+.upload {
 	margin-top: 20px;
 	padding: 7px 20px;
 	min-width: 100px;
+	margin-bottom: 20px;
 }
 
 #super {
 	margin-top: 50px;
 	display: block;
 	font-size: 140%;
+	margin-bottom: 30px;
 }
 
 #super.red {

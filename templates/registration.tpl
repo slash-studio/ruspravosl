@@ -25,12 +25,16 @@
           <label for="surname">Фамилия:</label>
           <input id="surname" name="surname" value="{if isset($regInfo)}{$regInfo.surname}{/if}" />
         </div>
-        <div>
-          <label for="adress">Адрес:</label>
-          <input id="adress" name="adress" value="{if isset($regInfo)}{$regInfo.address}{/if}"/>
+		<div>
+          <label for="age">Возраст:</label>
+          <input id="age" name="age" value="{if isset($regInfo)}{$regInfo.age}{/if}" />
         </div>
         <div>
-          <label for="school">Школа:</label>
+          <label for="address">Адрес:</label>
+          <input id="address" name="address" value="{if isset($regInfo)}{$regInfo.address}{/if}"/>
+        </div>
+        <div>
+          <label for="school">Место учебы:</label>
           <input id="school" name="school" value="{if isset($regInfo)}{$regInfo.school}{/if}"/>
         </div>
         <button id="reg" name="submit" value="submit">Зарегистрироваться</button>
