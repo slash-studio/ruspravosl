@@ -1,0 +1,42 @@
+#top_block h1 {
+	font-size: 180%;
+	font-family: Georgia;
+	margin-bottom: 20px;
+}
+
+#top_block h2 {
+	font-size: 150%;
+	font-family: Georgia;
+	margin: 20px 0;
+}
+
+#top_block span.info {
+	font-size: 110%;
+	display: block;
+	margin-bottom: 5px;
+}
+
+#top_block span.info b {
+	font-style: italic;
+}
+
+#top_block {
+	width: 800px;
+	margin: 35px auto 0;
+}
+
+#upload {
+	margin-top: 20px;
+	padding: 7px 20px;
+	min-width: 100px;
+}
+
+#super {
+	margin-top: 50px;
+	display: block;
+	font-size: 140%;
+}
+
+#super.red {
+	color: red;
+}
