@@ -1,0 +1,26 @@
+#top_block {
+	width: 600px;
+	margin: 35px auto 0;
+}
+
+#top_block ul li {
+	min-height: 150px;
+	margin-bottom: 20px;
+}
+
+#top_block ul li h2 {
+	margin-left: 170px;
+	font-size: 140%;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+#top_block ul li img {
+	width: 150px;
+	height: 150px;
+	float: left;
+}
+
+#top_block ul li p {
+	margin-left: 170px;
+}

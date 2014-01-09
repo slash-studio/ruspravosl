@@ -12,7 +12,7 @@
       <a href="/">Положение о конкурсе</a>
     </li>
     <li>
-      <a href="/">Жюри</a>
+      <a href="/includes/jury.php">Жюри</a>
     </li>
     </ul>
   </nav>

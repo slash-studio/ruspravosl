@@ -17,83 +17,81 @@
     <div class="imgs">
       <h2>Загруженные фотографии</h2>
       <h3>Изобразительное искусство</h3>
-	  <h4>«Традиции православной культуры»</h4>
-	  <ul>
-        <li>
-          <a href="#" class="block"><img src="/images/min1.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">9</a>
-        </li><li>
-          <a href="#" class="block"><img src="/images/min2.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">1</a>
-        </li><li>
-          
-        </li>
-      </ul>
-      <button class="upload">Загрузить фото</button>
-	  <h4>«Святые защитники Руси»</h4>
-	  <ul>
-        <li>
-          <a href="#" class="block"><img src="/images/min3.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">9</a>
-        </li><li>
-          <a href="#" class="block"><img src="/images/min4.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">1</a>
-        </li><li>
-          <a href="#" class="block"><img src="/images/min5.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">1</a>
-        </li>
-      </ul>
-      <button class="upload">Загрузить фото</button>
-	  <h4>«Моя Родина»</h4>
-	  <ul>
-        <li>
-          <a href="#" class="block"><img src="/images/min6.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">9</a>
-        </li><li>
-        </li><li>
-          
-        </li>
-      </ul>
-      <button class="upload">Загрузить фото</button>
+	  <div>
+		  <h4>«Традиции православной культуры»</h4>
+		  <button class="upload">Загрузить фото</button>
+      </div>	 
+	  <div>
+		  <h4>«Святые защитники Руси»</h4>
+		  <button class="upload">Загрузить фото</button>
+		  <ul>
+			<li>
+			  <a href="#" class="block"><img src="/images/min3.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">9</a>
+			</li><li>
+			  <a href="#" class="block"><img src="/images/min4.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">1</a>
+			</li><li>
+			  <a href="#" class="block"><img src="/images/min5.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">1</a>
+			</li>
+		  </ul>
+	  </div>
+	  <div>
+		  <h4>«Моя Родина»</h4><button class="upload">Загрузить фото</button>
+		  <ul>
+			<li>
+			  <a href="#" class="block"><img src="/images/min6.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">9</a>
+			</li><li>
+			</li><li>
+			  
+			</li>
+		  </ul>
+      </div>
 	  <h3>«Декоративно-прикладное творчество»</h3>
-	  <h4>«Традиции православной культуры»</h4>
-	  <ul>
-        <li>
-          <a href="#" class="block"><img src="/images/min1.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">9</a>
-        </li><li>
-          <a href="#" class="block"><img src="/images/min2.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">1</a>
-        </li><li>
-          
-        </li>
-      </ul>
-      <button class="upload">Загрузить фото</button>
-	  <h4>«Святые защитники Руси»</h4>
-	  <ul>
-        <li>
-          <a href="#" class="block"><img src="/images/min3.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">9</a>
-        </li><li>
-          <a href="#" class="block"><img src="/images/min4.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">1</a>
-        </li><li>
-          <a href="#" class="block"><img src="/images/min5.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">1</a>
-        </li>
-      </ul>
-      <button class="upload">Загрузить фото</button>
-	  <h4>«Моя Родина»</h4>
-	  <ul>
-        <li>
-          <a href="#" class="block"><img src="/images/min6.jpg" /></a><button class="x">x</button>
-          <a href="#" class="likes">9</a>
-        </li><li>
-        </li><li>
-          
-        </li>
-      </ul>
-      <button class="upload">Загрузить фото</button>
+	  <div>
+		  <h4>«Традиции православной культуры»</h4><button class="upload">Загрузить фото</button>
+		  <ul>
+			<li>
+			  <a href="#" class="block"><img src="/images/min1.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">9</a>
+			</li><li>
+			  <a href="#" class="block"><img src="/images/min2.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">1</a>
+			</li><li>
+			  
+			</li>
+		  </ul>
+	  </div>
+	  <div>
+		  <h4>«Святые защитники Руси»</h4><button class="upload">Загрузить фото</button>
+		  <ul>
+			<li>
+			  <a href="#" class="block"><img src="/images/min3.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">9</a>
+			</li><li>
+			  <a href="#" class="block"><img src="/images/min4.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">1</a>
+			</li><li>
+			  <a href="#" class="block"><img src="/images/min5.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">1</a>
+			</li>
+		  </ul>
+      </div>
+	  <div>
+		  <h4>«Моя Родина»</h4><button class="upload">Загрузить фото</button>
+		  <ul>
+			<li>
+			  <a href="#" class="block"><img src="/images/min6.jpg" /></a><button class="x">x</button>
+			  <a href="#" class="likes">9</a>
+			</li><li>
+			</li><li>
+			  
+			</li>
+		  </ul>
+	  </div>  
+	  
     </div>
     <span id="super" class="red">Ваши работы не проверены</span>
   </div>

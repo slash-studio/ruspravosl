@@ -34,3 +34,9 @@ button {
 button:hover {
 	background: #6a4018;
 }
+
+#top_block h1 {
+	font-size: 180%;
+	font-family: Georgia;
+	margin-bottom: 30px;
+}
