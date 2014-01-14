@@ -13,6 +13,7 @@ CREATE TABLE `users` (
    `login`       VARCHAR(45) NOT NULL,
    `name`        VARCHAR(80) NOT NULL,
    `surname`     VARCHAR(80) NOT NULL,
+   `age`         INT         NOT NULL,
    `address`     VARCHAR(100) NOT NULL,
    `school`      VARCHAR(80) NOT NULL,
    `password`    CHAR(50)    NOT NULL,

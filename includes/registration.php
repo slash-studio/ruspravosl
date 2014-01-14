@@ -10,14 +10,15 @@ if (isset($_POST['submit'])) {
       'name'    => $name    = $post['name'],
       'school'  => $school  = $post['school'],
       'surname' => $surname = $post['surname'],
-      'address' => $address = $post['adress']
+	  'age'     => $age     = $post['age'],
+      'address' => $address = $post['address']
     );
    try {
       $data_h->validateForm($post)
              ->validateLogin($login)
              ->validateRepeatPasswords($pass, $repass)
              ->validatePassword($pass);
-      Registration::Register($login, $pass, $name, $surname, $address, $school);
+      Registration::Register($login, $pass, $name, $surname, $age, $address, $school);
       unset($_SESSION['regInfo']);
       //gratzzz!!!!
       //header("Location: /некоторая страница");

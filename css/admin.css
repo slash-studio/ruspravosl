@@ -1,0 +1,57 @@
+header {
+	margin: 20px 0 0;
+}
+
+header nav ul li {
+	display: inline-block;
+	margin-right: 20px;
+	font-size: 130%;
+	font-weight: bold;
+}
+
+#wrap {
+	min-height: 880px;
+	width: 1100px;
+	margin: 0 auto;
+}
+
+textarea {
+	padding: 5px;
+	display: block;
+}
+
+#save_text, .save_jury, .delete_jury {
+	padding: 7px 20px;
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: 20px;
+}
+
+.delete_jury {
+	background: red;
+}
+
+.delete_jury:hover {
+	background: darkred;
+}
+
+#text_edit label, form.form_jury label {
+	display: block;
+	margin: 20px 0 10px;
+	font-weight: bold;
+}
+
+#text_head {
+	width: 300px;
+}
+
+form.form_jury {
+	padding-bottom: 20px;
+	border-bottom: 1px #ccc solid;
+}
+
+form.form_jury h2 {
+	font-family: Georgia;
+	font-size: 130%;
+	margin: 20px 0;
+}
