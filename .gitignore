@@ -7,6 +7,5 @@ cache/
 includes/uploads/
 *~
 *.ajax
-user_consts.php
 pma/
 *.log
