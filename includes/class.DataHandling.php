@@ -30,6 +30,14 @@
          return $this;
       }
 
+      public function validatePositiveNum($num, $message = ERROR_AGE)
+      {
+         if (!is_numeric($num) || $num <= 0) {
+            throw new Exception($message);
+         }
+         return $this;
+      }
+
       public function validateLogin($login, $message = ERROR_LOGIN_LEN)
       {
          if (strlen($login) < LOGIN_LEN) throw new Exception($message);

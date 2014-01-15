@@ -1,39 +1,24 @@
 {extends file='admin.tpl'}
 {block name="div.main"}
-	<div id="top_block">
-		<h1>Новость на главной странице</h1>
-		<form action="/includes/edit_jury.php" method="POST" class="form_jury">
-			<input type="hidden" class="jury_id" name="jury_id" value="1" />
-			<label for="jury_head_1">Имя:</label>
-			<input class="jury_head" name="jury_head" id="jury_head_1" value="Кристина Алехина" />
-			<label for="jury_body_1">Текст:</label>
-			<textarea class="jury_body" name="jury_body" id="jury_body_1" rows="5" cols="70">Декан факультета права. Быть хорошим преподавателем - это искусство, которое достигается сочетанием природных дарований и серьезной работой, в том числе, и обычной работой ремесленника.</textarea>
-			<button class="save_jury">Сохранить</button><button class="delete_jury">Удалить</button>
-		</form>
-		<form action="/includes/edit_jury.php" method="POST" class="form_jury">
-			<input type="hidden" class="jury_id" name="jury_id" value="2" />
-			<label for="jury_head_2">Имя:</label>
-			<input class="jury_head" name="jury_head" id="jury_head_2" value="Альбина Ладыжко" />
-			<label for="jury_body_2">Текст:</label>
-			<textarea class="jury_body" name="jury_body" id="jury_body_2" rows="5" cols="70">Декан факультета права. Быть хорошим преподавателем - это искусство, которое достигается сочетанием природных дарований и серьезной работой, в том числе, и обычной работой ремесленника.</textarea>
-			<button class="save_jury">Сохранить</button><button class="delete_jury">Удалить</button>
-		</form>
-		<form action="/includes/edit_jury.php" method="POST" class="form_jury">
-			<input type="hidden" class="jury_id" name="jury_id" value="3" />
-			<label for="jury_head_3">Имя:</label>
-			<input class="jury_head" name="jury_head" id="jury_head_3" value="Марк Тертышный" />
-			<label for="jury_body_3">Текст:</label>
-			<textarea class="jury_body" name="jury_body" id="jury_body_3" rows="5" cols="70">Декан факультета права. Быть хорошим преподавателем - это искусство, которое достигается сочетанием природных дарований и серьезной работой, в том числе, и обычной работой ремесленника.</textarea>
-			<button class="save_jury">Сохранить</button><button class="delete_jury">Удалить</button>
-		</form>
-		<form action="/includes/new_jury.php" method="POST" class="form_jury">
-			<h2>Добавить жюри</h2>
-			<input type="hidden" class="jury_id" name="jury_id" value="" />
-			<label for="jury_head_new">Имя:</label>
-			<input class="jury_head" name="jury_head" id="jury_head_new" value="" />
-			<label for="jury_body_new">Текст:</label>
-			<textarea class="jury_body" name="jury_body" id="jury_body_new" rows="5" cols="70"></textarea>
-			<button class="save_jury">Добавить</button>
-		</form>
-	</div>
+<div id="top_block">
+  <h1>Редактирование Жюри</h1>
+  {foreach from=$jury item=judge name=foo}
+  <form action="/admin/jury" method="post" class="form_jury">
+    <input type="hidden" class="jury_id" name="id" value="{$judge.jury_id}" />
+    <label for="jury_head_{$smarty.foreach.foo.index}">Имя:</label>
+    <input class="jury_head" name="name" id="jury_head_{$smarty.foreach.foo.index}" value="{$judge.jury_name}" />
+    <label for="jury_body_{$smarty.foreach.foo.index}">Текст:</label>
+    <textarea class="jury_body" name="info" id="jury_body_{$smarty.foreach.foo.index}" rows="5" cols="70">{$judge.jury_info}</textarea>
+    <button class="save_jury" name="mode" value="Update">Сохранить</button><button class="delete_jury" name="mode" value="Delete">Удалить</button>
+  </form>
+  {/foreach}
+  <form action="/admin/jury" method="post" class="form_jury">
+    <h2>Добавить жюри</h2>
+    <label for="jury_head_new">Имя:</label>
+    <input class="jury_head" name="name" id="jury_head_new" value="" />
+    <label for="jury_body_new">Текст:</label>
+    <textarea class="jury_body" name="info" id="jury_body_new" rows="5" cols="70"></textarea>
+    <button class="save_jury" name="mode" value="Insert">Добавить</button>
+  </form>
+</div>
 {/block}

@@ -14,7 +14,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/reg_auth.inc';
 $smarty = new TSmarty();
 $smarty->force_compile = true;
 
-$data_h = new DataHandling();
+$data_h       = new DataHandling();
+$isAjaxScript = false;
 
 $smarty->assign('isLogin', Authentification::CheckCredentials());
 ?>

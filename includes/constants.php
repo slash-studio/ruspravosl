@@ -14,4 +14,12 @@ define('ERROR_OLD_NEW_PASS', 'Введенные пароли не совпад�
 define('ERROR_FORM_FILL', 'Некорректно заполнена форма.');
 define('ERROR_PASS_LEN', 'Пароль должен быть длиннее ' . (PASS_LEN - 1) . '-ти символов.');
 define('ERROR_LOGIN_LEN', 'Логин должен быть длиннее ' . (LOGIN_LEN - 1) . '-ти символов.');
+define('ERROR_AGE', 'Возраст должен быть положительным числом.');
+
+//admin settings
+define('ADMIN_LOGIN', 'admin');
+define('ADMIN_PASS', 'admin');
+
+define('OT_ASC', 'ASC');
+define('OT_DESC', 'DESC');
 ?>

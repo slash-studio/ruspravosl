@@ -3,6 +3,8 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule (.*) /index.php [L]
 
+Options -Indexes
+
 ErrorDocument 404 /includes/404.php
 
 php_flag error_repritng on

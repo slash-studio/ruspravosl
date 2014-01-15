@@ -10,12 +10,13 @@ if (isset($_POST['submit'])) {
       'name'    => $name    = $post['name'],
       'school'  => $school  = $post['school'],
       'surname' => $surname = $post['surname'],
-	  'age'     => $age     = $post['age'],
+	    'age'     => $age     = $post['age'],
       'address' => $address = $post['address']
     );
    try {
       $data_h->validateForm($post)
              ->validateLogin($login)
+             ->validatePositiveNum($age)
              ->validateRepeatPasswords($pass, $repass)
              ->validatePassword($pass);
       Registration::Register($login, $pass, $name, $surname, $age, $address, $school);

@@ -34,6 +34,7 @@ class Registration
       $password,
       $name,
       $surname,
+      $age,
       $address,
       $school
    )
@@ -50,6 +51,7 @@ class Registration
          $user->name    = $name;
          $user->school  = $school;
          $user->surname = $surname;
+         $user->age     = $age;
          $user->address = $address;
          $user->Insert();
          AuthorizedUser::authorize($login, $user->password, true);
@@ -97,7 +99,7 @@ class AuthorizedUser
          //
       }
       unset($_SESSION['login']);
-      session_destroy();
+      // session_destroy();
    }
 
    public static function changePassword($email, $oldPass, $newPass)

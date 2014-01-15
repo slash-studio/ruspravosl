@@ -8,6 +8,7 @@ class UserDB
       $id;
 
    public
+      $age      = '',
       $salt     = '',
       $name     = '',
       $login    = '',
@@ -53,7 +54,7 @@ class UserDB
          return;
       }
       global $db;
-      $query = 'SELECT id, login, name, surname, address, school, password, salt FROM users WHERE login = ?';
+      $query = 'SELECT id, login, name, surname, age, address, school, password, salt FROM users WHERE login = ?';
       $data = $db->Query($query, Array($login));
       $this->login = $login;
       $this->isExist = !empty($data);
@@ -69,11 +70,12 @@ class UserDB
    {
       global $db;
       $query =
-         'UPDATE users SET login = ?, name = ?, surname = ?, address = ?, school = ?, password = ?, salt = ? WHERE id = ?';
+         'UPDATE users SET login = ?, name = ?, surname = ?, age = ? address = ?, school = ?, password = ?, salt = ? WHERE id = ?';
       $newValues = Array(
          $this->login,
          $this->name,
          $this->surname,
+         $this->age,
          $this->address,
          $this->school,
          $this->password,
@@ -86,12 +88,13 @@ class UserDB
    public function Insert()
    {
       global $db;
-      $query = 
-         'INSERT INTO users(login, name, surname, address, school, password, salt) VALUES(?, ?, ?, ?, ?, ?, ?)';
+      $query =
+         'INSERT INTO users(login, name, surname, age, address, school, password, salt) VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
       $values = Array(
          $this->login,
          $this->name,
          $this->surname,
+         $this->age,
          $this->address,
          $this->school,
          $this->password,
