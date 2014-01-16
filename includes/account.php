@@ -6,7 +6,8 @@ if (!Authentification::CheckCredentials()) {
 }
 
 $user = new UserDB($_SESSION['login']);
-$smarty->assign('login', $user->login)
+$smarty->assign('id', $user->id)
+	   ->assign('login', $user->login)
        ->assign('fullname', $user->name . ' ' . $user->surname)
        ->assign('age', $user->age)
        ->assign('address', $user->address)

@@ -12,8 +12,7 @@
 			<img src="/images/news1.jpg" />
 			<div>
 				<h1>{$mainNews[0].main_news_text_head}</h1>
-				<p>{$mainNews[0].main_news_text_body}</p>
-				<button id="start" type="button" onClick="javascript:location.assign('/login')">Принять участие!</button>
+				{$mainNews[0].main_news_text_body}
 			</div>
 		</section>
 		<section class="imgs">

@@ -4,6 +4,8 @@
   <link href="/css/footer.css" rel="stylesheet" />
   <link href="/css/account.css" rel="stylesheet" />
   <link href="/css/images.css" rel="stylesheet" />
+  <script src="/js/ajaxupload.3.5.js"></script>
+  <script src="/js/upload_photo.js"></script>
 {/block}
 {block name='div.main'}
   {include file="header.tpl"}
@@ -18,12 +20,12 @@
       <h2>Загруженные фотографии</h2>
       <h3>Изобразительное искусство</h3>
 	  <div>
-		  <h4>«Традиции православной культуры»</h4>
-		  <button class="upload">Загрузить фото</button>
+		  <h4>«Традиции православной культуры»</h4><button class="upload" data="{$id},1">Загрузить фото</button>
+		  <ul>
+		  </ul>
       </div>	 
 	  <div>
-		  <h4>«Святые защитники Руси»</h4>
-		  <button class="upload">Загрузить фото</button>
+		  <h4>«Святые защитники Руси»</h4><button class="upload" data="{$id},2">Загрузить фото</button>
 		  <ul>
 			<li>
 			  <a href="#" class="block"><img src="/images/min3.jpg" /></a><button class="x">x</button>
@@ -38,20 +40,17 @@
 		  </ul>
 	  </div>
 	  <div>
-		  <h4>«Моя Родина»</h4><button class="upload">Загрузить фото</button>
+		  <h4>«Моя Родина»</h4><button class="upload" data="{$id},3">Загрузить фото</button>
 		  <ul>
 			<li>
 			  <a href="#" class="block"><img src="/images/min6.jpg" /></a><button class="x">x</button>
 			  <a href="#" class="likes">9</a>
-			</li><li>
-			</li><li>
-			  
 			</li>
 		  </ul>
       </div>
 	  <h3>«Декоративно-прикладное творчество»</h3>
 	  <div>
-		  <h4>«Традиции православной культуры»</h4><button class="upload">Загрузить фото</button>
+		  <h4>«Традиции православной культуры»</h4><button class="upload" data="{$id},4">Загрузить фото</button>
 		  <ul>
 			<li>
 			  <a href="#" class="block"><img src="/images/min1.jpg" /></a><button class="x">x</button>
@@ -59,13 +58,11 @@
 			</li><li>
 			  <a href="#" class="block"><img src="/images/min2.jpg" /></a><button class="x">x</button>
 			  <a href="#" class="likes">1</a>
-			</li><li>
-			  
 			</li>
 		  </ul>
 	  </div>
 	  <div>
-		  <h4>«Святые защитники Руси»</h4><button class="upload">Загрузить фото</button>
+		  <h4>«Святые защитники Руси»</h4><button class="upload" data="{$id},5">Загрузить фото</button>
 		  <ul>
 			<li>
 			  <a href="#" class="block"><img src="/images/min3.jpg" /></a><button class="x">x</button>
@@ -80,14 +77,11 @@
 		  </ul>
       </div>
 	  <div>
-		  <h4>«Моя Родина»</h4><button class="upload">Загрузить фото</button>
+		  <h4>«Моя Родина»</h4><button class="upload" data="{$id},6">Загрузить фото</button>
 		  <ul>
 			<li>
 			  <a href="#" class="block"><img src="/images/min6.jpg" /></a><button class="x">x</button>
 			  <a href="#" class="likes">9</a>
-			</li><li>
-			</li><li>
-			  
 			</li>
 		  </ul>
 	  </div>  
