@@ -2,6 +2,7 @@
 {block name='links' append}
   <link href="/css/images.css" rel="stylesheet" />
   <link href="/css/admin_photos.css" rel="stylesheet" />
+  <script src="/js/admin.photos.js"></script>
 {/block}
 {block name="div.main"}
   <aside>{$menu}</aside>
@@ -20,7 +21,7 @@
           <div class="admin">
              <span class="likes">35</span>
              <div class="panel">
-                <button class="accept">V</button><button class="reject">Л</button><button class="delete">X</button>
+                <button data-id="{$img.images_id}" class="accept">V</button><button data-id="{$img.images_id}" data-value="2" class="reject">Л</button><button data-id="{$img.images_id}" class="delete">X</button>
              </div>
           </div>
         </li>
