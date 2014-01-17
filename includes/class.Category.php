@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Entity.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Image.php';
 
 class Category extends Entity
 {
@@ -203,10 +204,20 @@ class Category extends Entity
          return $result;
 
       };
+      global $_image;
+      $images = $_image->GetImagesForUser($id);
       $roots = Array();
       foreach ($tree as $k => $sub) {
          $roots[$k]['info'] = $names[$k];
          $roots[$k]['subcat'] = $buildTree($sub, $this);
+         foreach ($roots[$k]['subcat'] as &$subcat) {
+            $subcat['imgs_info'] = Array();
+            foreach ($images as $image) {
+               if ($subcat['categories_id'] == $image['images_category_id']) {
+                  $subcat['imgs_info'][] = Array('images_id' => $image['images_id'], 'images_status' => $image['images_status']);
+               }
+            }
+         }
       }
       return $roots;
    }

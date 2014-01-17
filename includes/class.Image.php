@@ -1,6 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Entity.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Category.php';
 
 class Image extends Entity
 {

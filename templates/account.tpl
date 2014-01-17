@@ -25,6 +25,12 @@
             <h4>«{$cat.categories_name}»</h4>
             <button class="upload" data="{$id},{$cat.categories_id}">Загрузить фото</button>
             <ul>
+            {foreach from=$cat.imgs_info item=img}
+            <li>
+            <a href="#" class="block" data="{$img.images_status}"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a><button class="x">x</button>
+            <a href="#" class="likes">9</a>
+            </li>
+            {/foreach}
             </ul>
           </div>
         {/foreach}
