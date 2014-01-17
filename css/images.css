@@ -1,6 +1,6 @@
 .imgs ul li a.block {
 	display: block;
-	width: 210px;
+	min-width: 210px;
 	text-align: center;
 	height: 150px;
 	background: #ddd;
@@ -15,7 +15,7 @@
 	font-style: italic;
 	margin-top: 7px;
 	color: black;
-	width: 210px;
+	min-width: 210px;
 	margin-bottom: 7px;
 }
 
