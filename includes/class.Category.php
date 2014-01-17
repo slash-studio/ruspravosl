@@ -24,6 +24,13 @@ class Category extends Entity
             null,
             true,
             Array('IsNotEmpty')
+         ),
+         new Field(
+            'path',
+            null,
+            false,
+            Array('IsSetVar'),
+            'Like'
          )
       );
    }
@@ -139,8 +146,9 @@ class Category extends Entity
       return Array($tree, $names);
    }
 
-   public function MakeMenutree($id = -1)
+   public function MakeMenutree($id, $isAdminMenu = false)
    {
+      $id = empty($id) ? -1 : $id;
       list($tree, $names) = $this->SetTreeParams();
       $resName  = !empty($names[$id]) ? $names[$id][$this->ToPrfxNm('name')] : null;
       $resPName = null;
@@ -150,22 +158,23 @@ class Category extends Entity
          }
          $resPName = $names[$id][$this->ToPrfxNm('name')];
       }
-      $buildTree = function ($t, $th) use (&$buildTree, $names) {
+      $buildTree = function ($t, $th) use (&$buildTree, $names, $isAdminMenu) {
          if (!count($t)) {
             return '';
          }
          $result = '<ul class="dropdown_block">';
          foreach ($t as $k => $sub) {
-            $new_node  = "<li id='c_$k'>";
-            $next_node = $buildTree($sub, $th);
-            if (empty($next_node)) {
-               $new_node .= "<a href='/category/" . $names[$k][$th->ToPrfxNm('id')] . "'>";
-            } else {
-               $new_node .= "<a href='javascript:void(0)' class='dropdown_head'>";
+            $new_node  = "<li id='c_$k'>"
+                       . "<a href='javascript:void(0)' class='dropdown_head'>" . $names[$k][$th->ToPrfxNm('name')] . '</a>';
+            if (empty($next_node = $buildTree($sub, $th))) {
+               $id = $names[$k][$th->ToPrfxNm('id')];
+               $href = $isAdminMenu ? '/admin/photos' : '/category';
+               $next_node = "<ul class='dropdown_block'>"
+                          . "<li><a href='$href/$id/0'>8 - 12 лет</a></li>"
+                          . "<li><a href='$href/$id/1'>13 - 18 лет</a></li>"
+                          . "<li><a href='$href/$id/2'>19 - 30 лет</a></li></ul>";
             }
-            $new_node .= $names[$k][$th->ToPrfxNm('name')] . '</a>';
-            $new_node .= $next_node;
-            $result .= $new_node . '</li>';
+            $result .= $new_node . $next_node . '</li>';
          }
          $result .= '</ul>';
 
@@ -174,6 +183,32 @@ class Category extends Entity
       };
 
       return Array(isset($tree) ? $buildTree($tree, $this) : '', $resName, $resPName);
+   }
+
+   public function MakeAccountTree($id = -1)
+   {
+      list($tree, $names) = $this->SetTreeParams();
+      $buildTree = function ($t, $th) use (&$buildTree, $names) {
+         if (!count($t)) {
+            return Array();
+         }
+         $result = Array();
+         foreach ($t as $k => $sub) {
+            if (empty($sub)) {
+               $result[] = $names[$k];
+            } else {
+               $result = $result + $buildTree($sub, $th);
+            }
+         }
+         return $result;
+
+      };
+      $roots = Array();
+      foreach ($tree as $k => $sub) {
+         $roots[$k]['info'] = $names[$k];
+         $roots[$k]['subcat'] = $buildTree($sub, $this);
+      }
+      return $roots;
    }
 
    public function MakeAdminTree()

@@ -11,7 +11,10 @@ $request = explode('/', substr($_SERVER['REQUEST_URI'], 1));
 switch ($request[0]) {
    case '': case null: case false:
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.MainNews.php';
-      $smarty->assign('mainNews', $_mainNews->GetAll())
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.CompetitiveButton.php';
+      $result = $_competitiveButton->GetAll();
+      $smarty->assign('competitiveStatus', $result[0]['competitive_button_status'])
+             ->assign('mainNews', $_mainNews->GetAll())
              ->display('index.tpl');
       break;
 
@@ -21,6 +24,10 @@ switch ($request[0]) {
 
    case 'registration':
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/registration.php';
+      break;
+
+   case 'success_reg':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/success_reg.php';
       break;
 
    case 'profile':

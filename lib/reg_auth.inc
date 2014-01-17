@@ -54,6 +54,7 @@ class Registration
          $user->age     = $age;
          $user->address = $address;
          $user->Insert();
+         $user = new UserDB($login);
          AuthorizedUser::authorize($login, $user->password, true);
       }
    }

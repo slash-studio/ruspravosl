@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Entity.php';
-
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Category.php';
 
 class Image extends Entity
 {
@@ -27,6 +27,28 @@ class Image extends Entity
             null
          ),
       );
+   }
+
+   public function CreateSearchForCatalog($category = null)
+   {
+      unset($this->search);
+
+      $hasClause = false;
+      $whereFields = Array();
+      $whereParams = Array();
+
+      if (!empty($category)) {
+         global $_category;
+         $whereParams[] = $category;
+         $whereFields[] = PackParam(self::TABLE, $this->GetFieldByName('category_id'), $hasClause, 'AND', '(');
+         $hasClause     = true;
+         $whereParams[] = "%.$category.%";
+         $whereFields[] = PackParam(Category::TABLE, $_category->GetFieldByName('path'), $hasClause, 'OR', '', ')');
+      }
+      $joins = Array(Category::TABLE => Array(null, Array('category_id', 'id')));
+
+      $this->search = new Search(self::TABLE, $whereFields, $whereParams, $joins);
+      return $this;
    }
 
    public function CreateSearch($categoryId = null, $userId = null)

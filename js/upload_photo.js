@@ -1,42 +1,66 @@
 $(function(){
-	$array = [];
+   $array = [];
     $('.upload').each(function() {
-		$btnUpload = $(this);
-		$data = $btnUpload.attr('data').split(',');
-		$array[$data[1]] = $(this);
-		new AjaxUpload($btnUpload, {
-			action: '/includes/uploadimage.php',
-			name: 'uploadimage',
-			data:
-				{
-					user_id: $data[0],
-					category_id: $data[1]
-				},
-			onSubmit: function(file, ext){
-				if (!(ext && /^(jpg|png|jpeg|gif)$/.test(ext))) {
-					// extension is not allowed
-					alert('This extension is not allowed. Only JPG, PNG or GIF');
-					return false;
-				}
-			},
-			onComplete: function(file, response) {
-				//Add uploaded file to list
-				$btn = this._settings.data.category_id;
-				if(response != "error") {
-					file_name = response;
-					$.post(
-					   "/includes/rename.php",
-					   {
-						  name: file_name
-					   },
-					   function(data){
-						  $array[$btn].siblings('ul').append('<li><a href="#" class="block"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><a href="#" class="likes"></a></li>');
-					   }
-					);
-				} else {
-					alert('File cannot be download ' + file);
-				}
-			}
-	    });
+      $btnUpload = $(this);
+      $data = $btnUpload.attr('data').split(',');
+      $array[$data[1]] = $(this);
+      new AjaxUpload($btnUpload, {
+         action: '/includes/uploadimage.php',
+         name: 'uploadimage',
+         data:
+            {
+               user_id: $data[0],
+               category_id: $data[1]
+            },
+         onSubmit: function(file, ext){
+            if (!(ext && /^(jpg|jpeg)$/.test(ext))) {
+               // extension is not allowed
+               alert('This extension is not allowed. Only JPG.');
+               return false;
+            }
+         },
+         onComplete: function(file, response) {
+            //Add uploaded file to list
+            $btn = this._settings.data.category_id;
+            if(response != "error") {
+               file_name = response;
+               $.post(
+                  "/includes/rename.php",
+                  {
+                    name: file_name
+                  },
+                  function(data){
+                    $array[$btn].siblings('ul').append('<li><a href="#" class="block in_image"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><a href="#" class="likes"></a></li>');
+                  }
+               );
+            } else {
+               alert('File cannot be download ' + file);
+            }
+         }
+       });
     });
+
+   $(document).on('click', '.imgs a.in_image button', function(){
+      //$button = $(this);
+      alert(32);
+      return false;
+      $.post(
+         "/includes/handler.Image.php",
+         {
+            type: 'Image',
+            mode: 'Delete',
+            params:
+                  {
+                     images_id: $button.attr('data')
+                  }
+         },
+         function(data) {
+            if (data.result) {
+               $button.parent().empty().remove();
+            } else {
+               alert(data.message);
+            }
+         }, "json"
+      );
+   });
 });

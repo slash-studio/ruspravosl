@@ -9,5 +9,9 @@
     <textarea id="text_body" name="text_body" rows="10" cols="100">{$mainNews[0].main_news_text_body}</textarea>
     <button id="save_text" name="save" value="Update">Сохранить</button>
   </form>
+  <form action="/admin/main_news" method="post" id="enable_competitive_form">
+    <input type="hidden" class="jury_id" name="competitive_status" value="{1 - $competitiveStatus}" />
+    <button id="enable_competitive" name="enable_competitive" value="enable_competitive">{if $competitiveStatus==1}Выключить{else}Включить{/if} кнопку "Принять участие!"</button>
+  </form>
 </div>
 {/block}

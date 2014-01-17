@@ -21,7 +21,7 @@ class CategoryHandler extends Handler
       }
       try {
          $db->link->beginTransaction();
-         $db->Query('CALL update_cat(?)', Array(parent::Insert($params, $getLastInsertId)));
+         $db->Query('CALL update_cat_path(?)', Array(parent::Insert($params, $getLastInsertId)));
          $db->link->commit();
       } catch (DBException $e) {
          $db->link->rollback();
@@ -40,7 +40,7 @@ class CategoryHandler extends Handler
       try {
          $db->link->beginTransaction();
          parent::Update($params);
-         $db->Query('CALL update_cat(?)', Array($params['id']));
+         $db->Query('CALL update_cat_path(?)', Array($params['id']));
          $db->link->commit();
       } catch (DBException $e) {
          $db->link->rollback();

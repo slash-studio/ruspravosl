@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
    `id`        INT         NOT NULL AUTO_INCREMENT,
    `name`      VARCHAR(80) NOT NULL,
    `parent_id` INT,
+   `path`      VARCHAR(50) NOT NULL DEFAULT '0',
    PRIMARY KEY(`id`),
    FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`)
 );
@@ -57,6 +58,14 @@ CREATE TABLE IF NOT EXISTS `images` (
    FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`)
 );
 
+CREATE TABLE IF NOT EXISTS `competitive_button` (
+   `id`          INT(1) NOT NULL AUTO_INCREMENT,
+   `status`      INT(1)  NOT NULL DEFAULT 0,
+   PRIMARY KEY (`id`)
+);
+
+INSERT INTO `competitive_button`(`status`) VALUES(1);
+
 DROP TRIGGER IF EXISTS `insert_categories`;
 DELIMITER //
 CREATE TRIGGER `insert_categories` BEFORE INSERT ON `categories`
@@ -68,13 +77,14 @@ END
 //
 DELIMITER ;
 
-INSERT INTO `categories`(`id`, `name`, `parent_id`) VALUES
-   (1, 'Художественное искусство', 1),
-   (2, '8-12 лет', 1),
-   (3, '13-18 лет', 1),
-   (4, 'Декоративно-прикладное искусство', 4),
-   (5, '8-12 лет', 4),
-   (6, '13-18 лет', 4);
+INSERT INTO `categories`(`id`, `name`, `parent_id`, `path`) VALUES
+   (1, 'Художественное искусство', 1, '1.'),
+   (2, 'Традиции православной культуры', 1, '1.2.'),
+   (3, 'Святые защитники Руси', 1, '1.3.'),
+   (4, 'Моя Родина', 1, '4.1.'),
+   (5, 'Декоративно-прикладное искусство', 5, '5.'),
+   (6, 'Традиции православной культуры', 5, '5.6.'),
+   (7, 'Святые защитники Руси', 5, '5.7.');
 
 DROP TRIGGER IF EXISTS `insert_users`;
 
@@ -87,15 +97,48 @@ END
 //
 
 DELIMITER $$
+--
+-- Процедуры
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `do_update_cat_path`(IN cur_id INT, IN ppath VARCHAR(50))
+BEGIN
+   DECLARE done, id1 INT;
+   DECLARE new_path VARCHAR(50);
+   DECLARE cur1 CURSOR FOR SELECT `id` FROM `categories` WHERE `parent_id` = cur_id;
+   DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 0;
 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `update_cat`(IN cur_id INT)
+   SET new_path = CONCAT(ppath, cur_id, '.');
+   UPDATE `categories` SET `path` = new_path WHERE `id` = cur_id;
+   SET done = 1;
+
+   OPEN cur1;
+   FETCH cur1 INTO id1;
+   WHILE done = 1 DO
+      IF id1 != cur_id THEN
+         CALL do_update_cat_path(id1, new_path);
+      END IF;
+      FETCH cur1 INTO id1;
+   END WHILE;
+
+   CLOSE cur1;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `update_cat_path`(IN cur_id INT)
 BEGIN
    DECLARE pid INT;
+   SET max_sp_recursion_depth=255;
    SELECT `parent_id` INTO pid FROM `categories` WHERE `id` = cur_id;
    IF (pid is NULL) THEN
+      SET pid = cur_id;
       UPDATE `categories` SET `parent_id` = cur_id WHERE `id` = cur_id;
    END IF;
+   IF (pid = cur_id) THEN
+      CALL do_update_cat_path(cur_id, '');
+   ELSE
+      CALL do_update_cat_path(cur_id, (SElECT `path` FROM `categories` WHERE `id` = pid));
+   END IF;
 END$$
+
 
 CREATE DEFINER=`smite`@`localhost` FUNCTION `create_encrypted_pass`(pass CHAR(50), salt VARCHAR(8)) RETURNS char(50) CHARSET utf8
 BEGIN

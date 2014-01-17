@@ -21,8 +21,7 @@ if (isset($_POST['submit'])) {
              ->validatePassword($pass);
       Registration::Register($login, $pass, $name, $surname, $age, $address, $school);
       unset($_SESSION['regInfo']);
-      //gratzzz!!!!
-      //header("Location: /некоторая страница");
+      header("Location: /success_reg");
    } catch (Exception $e) {
       $errorMsg = $e->getMessage();
    }
