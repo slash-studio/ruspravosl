@@ -21,7 +21,7 @@
           <div class="admin">
              <span class="likes">35</span>
              <div class="panel">
-                <button data-id="{$img.images_id}" class="accept">V</button><button data-id="{$img.images_id}" data-value="2" class="reject">Л</button><button data-id="{$img.images_id}" class="delete">X</button>
+                <button data-id="{$img.images_id}" data-value="1" class="accept edit_status">V</button><button data-id="{$img.images_id}" data-value="2" class="reject edit_status">Л</button><button data-id="{$img.images_id}" class="delete">X</button>
              </div>
           </div>
         </li>

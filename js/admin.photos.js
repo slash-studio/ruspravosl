@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   $(document).on('click', 'button.accept', function(e) {
+   $(document).on('click', 'button.edit_status', function(e) {
       $button = $(this);
       $.post(
          "/includes/handler.Image.php",
@@ -8,29 +8,7 @@ $(document).ready(function() {
             params:
                   {
                      id: $button.attr('data-id'),
-                     status: 1
-                  }
-         },
-         function(data) {
-            if (data.result) {
-               location.reload();
-            } else {
-               alert(data.message);
-            }
-         },
-         "json"
-      );
-   });
-   $(document).on('click', 'button.reject', function(e) {
-      $button = $(this);
-      $.post(
-         "/includes/handler.Image.php",
-         {
-            mode: 'Update',
-            params:
-                  {
-                     id: $button.attr('data-id'),
-                     status: 2
+                     status: $button.attr('data-value')
                   }
          },
          function(data) {
