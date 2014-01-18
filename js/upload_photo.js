@@ -30,7 +30,7 @@ $(function(){
                     name: file_name
                   },
                   function(data){
-                    $array[$btn].siblings('ul').append('<li><a href="#" class="block in_image"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><a href="#" class="likes"></a></li>');
+                    $array[$btn].siblings('ul').append('<li><a href="#" class="block"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><a href="#" class="likes"></a></li>');
                   }
                );
             } else {
@@ -40,10 +40,10 @@ $(function(){
        });
     });
 
-   $(document).on('click', '.imgs a.in_image button', function(){
-      //$button = $(this);
-      alert(32);
-      return false;
+   $(document).on('click', '.imgs ul li button', function(){
+      
+	  $button = $(this);
+	  
       $.post(
          "/includes/handler.Image.php",
          {

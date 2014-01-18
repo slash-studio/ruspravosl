@@ -18,9 +18,10 @@ header nav ul li {
 textarea {
 	padding: 5px;
 	display: block;
+	border: 1px #bbb solid;
 }
 
-#save_text, .save_jury, .delete_jury {
+#save_text, .save_jury, .delete_jury, #enable_competitive {
 	padding: 7px 20px;
 	display: inline-block;
 	margin-right: 10px;
