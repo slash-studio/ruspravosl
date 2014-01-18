@@ -167,7 +167,8 @@ class Category extends Entity
          foreach ($t as $k => $sub) {
             $new_node  = "<li id='c_$k'>"
                        . "<a href='javascript:void(0)' class='dropdown_head'>" . $names[$k][$th->ToPrfxNm('name')] . '</a>';
-            if (empty($next_node = $buildTree($sub, $th))) {
+			$next_node = $buildTree($sub, $th);
+            if (empty($next_node)) {
                $id = $names[$k][$th->ToPrfxNm('id')];
                $href = $isAdminMenu ? '/admin/photos' : '/category';
                $next_node = "<ul class='dropdown_block'>"
