@@ -28,7 +28,6 @@
             {foreach from=$cat.imgs_info item=img}
             <li>
             <a href="#" class="block" data="{$img.images_status}"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a><button class="x" data="{$img.images_id}">x</button>
-            <a href="#" class="likes">9</a>
             </li>
             {/foreach}
             </ul>

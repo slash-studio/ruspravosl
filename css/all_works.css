@@ -48,10 +48,6 @@ aside li a.open div.arrow {
 	margin-bottom: 30px;
 }
 
-.imgs ul li:nth-child(3n-2) {
-	margin-left: 0;
-}
-
 #top_block.imgs ul li {
 	margin-bottom: 20px;
 }

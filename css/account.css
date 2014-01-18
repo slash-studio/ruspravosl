@@ -35,7 +35,11 @@
 .upload {
 	padding: 7px 20px;
 	min-width: 100px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+div.imgs ul li {
+	margin-bottom: 20px;
 }
 
 div.imgs div {

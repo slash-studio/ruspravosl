@@ -22,22 +22,18 @@
         <li>
           <a href="#" class="block"><img src="/images/min1.jpg" /></a>
           <a href="#" class="user">Василий Янкин (9 лет)</a>
-          <a href="#" class="likes">35</a>
         </li>
         <li>
           <a href="#" class="block"><img src="/images/min2.jpg" /></a>
           <a href="#" class="user">Марк Тертышный (11 лет)</a>
-          <a href="#" class="likes">12</a>
         </li>
         <li>
           <a href="#" class="block"><img src="/images/min3.jpg" /></a>
           <a href="#" class="user">Александраааа Лосницкий (12 лет)</a>
-          <a href="#" class="likes">9</a>
         </li>
         <li>
           <a href="#" class="block"><img src="/images/min4.jpg" /></a>
           <a href="#" class="user">Карина Штоль (18 лет)</a>
-          <a href="#" class="likes">3</a>
         </li>
       </ul>
     </section>

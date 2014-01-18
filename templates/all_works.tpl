@@ -20,7 +20,6 @@
         <li>
           <a href="#" class="block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
           <a href="#" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age})</a>
-          <a href="#" class="likes">35</a>
         </li>
       {/foreach}
       </ul>

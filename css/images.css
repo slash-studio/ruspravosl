@@ -26,14 +26,6 @@
 	position: relative;
 }
 
-.imgs ul li:first-child {
-	margin-left: 0;
-}
-
-.imgs ul li:last-child {
-	margin-right: 0;
-}
-
 .imgs ul li:hover button.x {
 	display: block;
 }

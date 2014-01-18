@@ -19,7 +19,6 @@
           <a href="#" class="block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
           <a href="#" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age})</a>
           <div class="admin">
-             <span class="likes">35</span>
              <div class="panel">
                 <button data-id="{$img.images_id}" data-value="1" class="accept edit_status">V</button><button data-id="{$img.images_id}" data-value="2" class="reject edit_status">Л</button><button data-id="{$img.images_id}" class="delete">X</button>
              </div>

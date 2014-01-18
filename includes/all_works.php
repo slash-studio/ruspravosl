@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.User.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Category.php';
 
 $category = !empty($request[1]) ? $request[1] : null;
 list($categoryTree, $subCategoryName, $mainCategoryName) = $_category->MakeMenuTree($category);
