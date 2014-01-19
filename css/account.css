@@ -57,3 +57,26 @@ div.imgs div {
 #super.red {
 	color: red;
 }
+
+div.imgs a.rejected {
+	opacity: 0.5;
+	border: 3px red solid;
+}
+
+div.imgs a.rejected:hover {
+	opacity: 1;
+}
+
+div.imgs a.accepted {
+	border: 3px green solid;
+}
+
+div.imgs div.status_bar {
+	height: 20px;
+	border: 0;
+	margin-top: 5px;
+}
+
+.green { color: green; }
+
+.red { color: red; }
