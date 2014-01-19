@@ -27,11 +27,11 @@
             <ul>
             {foreach from=$cat.imgs_info item=img}
             <li>
-            <a href="#" class="block {if $img.images_status == 0}not_checked{elseif $img.images_status == 1}accepted{elseif $img.images_status == 2}rejected{/if}"
-						title="{if $img.images_status == 0}Ваша работа не проверена{elseif $img.images_status == 1}Ваша работа принята!{elseif $img.images_status == 2}Ваша работа отклонена!{/if}">
+            <a href="#" class="block {if $acc_self == 1}{if $img.images_status == 0}not_checked{elseif $img.images_status == 1}accepted{elseif $img.images_status == 2}rejected{/if}{/if}"
+						{if $acc_self == 1}title="{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}Работа принята!{elseif $img.images_status == 2}Работа отклонена!{/if}{/if}">
 				<img src="/includes/uploads/{$img.images_id}_s.jpg" />
 			</a>
-			<div class="status_bar">{if $img.images_status == 0}Ваша работа не проверена{elseif $img.images_status == 1}<span class="green">Ваша работа принята!</span>{elseif $img.images_status == 2}<span class="red">Ваша работа отклонена!</span>{/if}</div>
+			{if $acc_self == 1}<div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{/if}</div>{/if}
 			{if $acc_self == 1}<button class="x" data="{$img.images_id}">x</button>{/if}
             </li>
             {/foreach}
