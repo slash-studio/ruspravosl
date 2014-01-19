@@ -7,6 +7,7 @@ class MainNews extends Entity
 
    public function __construct()
    {
+      parent::__construct();
       $this->fields = Array(
          new Field(
             'id',

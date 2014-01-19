@@ -22,4 +22,5 @@ define('ADMIN_PASS', 'admin');
 
 define('OT_ASC', 'ASC');
 define('OT_DESC', 'DESC');
+define('OT_RAND', 'RAND()');
 ?>

@@ -92,4 +92,31 @@ class SQL
    }
 }
 
+class SQLOrder
+{
+   private
+      $fields = Array();
+
+   public function AddField($fInfo, $orderType)
+   {
+      $this->fields[] = Array(
+         'info' => $fInfo,
+         'type' => $orderType
+      );
+   }
+
+   public function GetOrder()
+   {
+      $result = '';
+      $amount = count($this->fields);
+      foreach ($this->fields as $key => $field) {
+         $result .= !empty($field['info']) ? SQL::ToTblNm($field['info'][0], $field['info'][1]->name) : ''
+                  . ' '
+                  . $field['type']
+                  . ($key < $amount - 1 ? ', ' : '');
+      }
+      return $result;
+   }
+}
+
 ?>

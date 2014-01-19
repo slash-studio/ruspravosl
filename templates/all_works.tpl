@@ -19,7 +19,7 @@
       {foreach from=$images item=img}
         <li>
           <a href="#" class="block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
-          <a href="#" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age})</a>
+          <a href="/profile/{$img.images_user_id}" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age})</a>
         </li>
       {/foreach}
       </ul>

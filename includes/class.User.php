@@ -1,6 +1,5 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Entity.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Image.php';
 
 class User extends Entity
 {
@@ -8,6 +7,7 @@ class User extends Entity
 
    public function __construct()
    {
+      parent::__construct();
       $this->fields = Array(
          new Field(
             'id',

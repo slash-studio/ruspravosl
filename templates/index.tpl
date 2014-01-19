@@ -17,25 +17,17 @@
       </div>
     </section>
     <section class="imgs">
-      <h1>Популярные работы</h1>
+      {if $imgs|@count > 0}
+      <h1>Конкурсные работы</h1>
       <ul>
+      {foreach from=$imgs item=img}
         <li>
-          <a href="#" class="block"><img src="/images/min1.jpg" /></a>
-          <a href="#" class="user">Василий Янкин (9 лет)</a>
+          <a href="#" class="block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
+          <a href="#" class="user">{$img.users_name} {$img.users_surname} ({$img.users_age} лет)</a>
         </li>
-        <li>
-          <a href="#" class="block"><img src="/images/min2.jpg" /></a>
-          <a href="#" class="user">Марк Тертышный (11 лет)</a>
-        </li>
-        <li>
-          <a href="#" class="block"><img src="/images/min3.jpg" /></a>
-          <a href="#" class="user">Александраааа Лосницкий (12 лет)</a>
-        </li>
-        <li>
-          <a href="#" class="block"><img src="/images/min4.jpg" /></a>
-          <a href="#" class="user">Карина Штоль (18 лет)</a>
-        </li>
+      {/foreach}
       </ul>
+      {/if}
     </section>
   </div>
 {/block}

@@ -1,5 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Entity.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.User.php';
 
 class Image extends Entity
 {
@@ -7,6 +8,7 @@ class Image extends Entity
 
    public function __construct()
    {
+      parent::__construct();
       $this->fields = Array(
          new Field(
             'id',
@@ -26,6 +28,8 @@ class Image extends Entity
             null
          ),
       );
+
+      $this->orderFields = Array('rand' => null);
    }
 
    public function CreateSearchForCatalog($category = null)
@@ -48,6 +52,46 @@ class Image extends Entity
 
       $this->search = new Search(self::TABLE, $whereFields, $whereParams, $joins);
       return $this;
+   }
+
+   public function GetRandomImages()
+   {
+      $this->CheckSearch();
+      global $_user;
+      $userAgeField     = $_user->GetFieldByName('age');
+      $userNameField    = $_user->GetFieldByName('name');
+      $userSurnameField = $_user->GetFieldByName('surname');
+      $fields =
+         array_merge(
+            SQL::PrepareFieldsForSelect(
+               static::TABLE,
+               $this->fields
+            ),
+            SQL::PrepareFieldsForSelect(
+               User::TABLE,
+               Array($userNameField, $userSurnameField, $userAgeField)
+            )
+         );
+      $this->UnsetSelectValues();
+
+      $this->selectTables =
+         Array(
+            static::TABLE => $this->fields,
+            User::TABLE   => Array($userNameField, $userSurnameField, $userAgeField)
+         );
+      $this->selectFields = SQL::GetListFieldsForSelect($fields);
+      $join = Array(User::TABLE => Array(null, Array('user_id', 'id')));
+      $this->search = new Search(self::TABLE, Array(), Array(), $join, Array(), Array(0, 4));
+      $this->AddOrder('rand', OT_RAND);
+      return
+         $this->SelectWithLang(
+            $this->selectTables,
+            $this->selectFields,
+            $this->search->GetClause(),
+            $this->search->GetParams(),
+            $this->search->GetJoins(),
+            $this->search->GetLimit()
+         );
    }
 
    public function CreateSearch($categoryId = null, $userId = null)

@@ -10,12 +10,7 @@ $request = explode('/', substr($_SERVER['REQUEST_URI'], 1));
 
 switch ($request[0]) {
    case '': case null: case false:
-      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.MainNews.php';
-      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.CompetitiveButton.php';
-      $result = $_competitiveButton->GetAll();
-      $smarty->assign('competitiveStatus', $result[0]['competitive_button_status'])
-             ->assign('mainNews', $_mainNews->GetAll())
-             ->display('index.tpl');
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/main.php';
       break;
 
    case 'login':
@@ -76,6 +71,10 @@ switch ($request[0]) {
             require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.photos.php';
             break;
       }
+      break;
+   case '404':
+   default:
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/404.php';
       break;
 }
 

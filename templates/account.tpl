@@ -10,12 +10,12 @@
 {block name='div.main'}
   {include file="header.tpl"}
   <div id="top_block">
-    <h1>{if $acc_self == 1}Мой аккаунт{else}{$fullname}{/if}</h1>
-    {if $acc_self == 1}<span class="info">Логин: <b>{$login}</b></span>{/if}
-    {if $acc_self == 1}<span class="info">Имя: <b>{$fullname}</b></span>{/if}
+    <h1>{if $acc_self}Мой аккаунт{else}{$fullname}{/if}</h1>
+    {if $acc_self}<span class="info">Логин: <b>{$login}</b></span>{/if}
+    <span class="info">Имя: <b>{$fullname}</b></span>
     <span class="info">Возраст: <b>{$age}</b></span>
-    {if $acc_self == 1}<span class="info">Адрес: <b>{$address}</b></span>{/if}
-    {if $acc_self == 1}<span class="info">Школа: <b>{$school}</b></span>{/if}
+    {if $acc_self}<span class="info">Адрес: <b>{$address}</b></span>{/if}
+    <span class="info">Школа: <b>{$school}</b></span>
     <div class="imgs">
       <h2>Загруженные фотографии</h2>
       {foreach from=$cats item=rootCat}
@@ -23,7 +23,7 @@
         {foreach from=$rootCat.subcat item=cat}
           <div>
             <h4>«{$cat.categories_name}»</h4>
-            {if $acc_self == 1}<button class="upload" data="{$id},{$cat.categories_id}">Загрузить фото</button>{/if}
+            {if $acc_self && $competitiveStatus}<button class="upload" data="{$id},{$cat.categories_id}">Загрузить фото</button>{/if}
             <ul>
             {foreach from=$cat.imgs_info item=img}
             <li>
@@ -31,8 +31,8 @@
 						{if $acc_self == 1}title="{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}Работа принята!{elseif $img.images_status == 2}Работа отклонена!{/if}{/if}">
 				<img src="/includes/uploads/{$img.images_id}_s.jpg" />
 			</a>
-			{if $acc_self == 1}<div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{/if}</div>{/if}
-			{if $acc_self == 1}<button class="x" data="{$img.images_id}">x</button>{/if}
+			{if $acc_self}<div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{/if}</div>{/if}
+			{if $acc_self}<button class="x" data="{$img.images_id}">x</button>{/if}
             </li>
             {/foreach}
             </ul>

@@ -72,6 +72,13 @@ class Search
       return !empty($this->limitParams);
    }
 
+   public function AddLimit($amount, $curPage)
+   {
+      $this->limitParams[] = $curPage;
+      $this->limitParams[] = $amount;
+      return $this;
+   }
+
    public function AddClause($field, $param)
    {
       $this->isChangeClause = true;

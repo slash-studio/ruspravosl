@@ -18,7 +18,29 @@ class Entity
 
    public
       $search,
+      $order,
+      $orderFields = Array(),
       $fields = Array();
+
+
+   public function __construct()
+   {
+      $this->order = new SQLOrder();
+   }
+
+   public function AddOrder($fieldName, $orderType = OT_ASC)
+   {
+      if (array_key_exists($fieldName, $this->orderFields)) {
+         $this->order->AddField($this->orderFields[$fieldName], $orderType);
+      }
+      return $this;
+   }
+
+   public function AddLimit($amount, $curPage = 0)
+   {
+      $this->CheckSearch()->search->AddLimit($amount, $curPage);
+      return $this;
+   }
 
    protected function GetFieldByName($name)
    {
@@ -93,13 +115,14 @@ class Entity
       return static::TABLE;
    }
 
-   public function GetQuery($specific, $table, $where = null, $join = null, $limit = false)
+   public function GetQuery($specific, $table, $where = null, $join = null, $order = null, $limit = false)
    {
       return   "SELECT $specific "
              . ' FROM '
              . $table
              . (!empty($join)  ? " $join "           : '')
              . (!empty($where) ? " WHERE $where "    : '')
+             . (!empty($order) ? " ORDER BY $order " : '')
              . ($limit         ? " LIMIT ?, ?"       : '');
    }
 
@@ -136,6 +159,7 @@ class Entity
                   static::TABLE,
                   $where,
                   $join,
+                  $this->order->GetOrder(),
                   $limit
                ),
                $params

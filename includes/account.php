@@ -2,18 +2,33 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/container.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Category.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Image.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.CompetitiveButton.php';
 
-if (!Authentification::CheckCredentials()) {
-   header("Location: /login/?originating_uri=" . $_SERVER['REQUEST_URI']);
+$userId = isset($request[1]) ? $request[1] : null;
+
+if (empty($userId)) {
+   if (!Authentification::CheckCredentials()) {
+      header('Location: /login/?originating_uri=' . $_SERVER['REQUEST_URI']);
+   }
+   $user = new UserDB($_SESSION['login']);
+   $accSelf = true;
+} else {
+   $user = UserDB::FindById($userId);
+   $userAuth = new UserDB(isset($_SESSION['login']) ? $_SESSION['login'] : '');
+   if (!$user->isExist) {
+      header('Location: /404');
+   }
+   $accSelf = $userAuth->isExist && $userAuth->id == $userId;
 }
-$user = new UserDB($_SESSION['login']);
-$smarty->assign('cats', $_category->MakeAccountTree($user->id))
+$result = $_competitiveButton->GetAll();
+$smarty->assign('competitiveStatus', $result[0]['competitive_button_status'])
+       ->assign('cats', $_category->MakeAccountTree($user->id))
        ->assign('id', $user->id)
        ->assign('login', $user->login)
        ->assign('fullname', $user->name . ' ' . $user->surname)
        ->assign('age', $user->age)
        ->assign('address', $user->address)
        ->assign('school', $user->school)
-	   ->assign('acc_self', 1)
+	    ->assign('acc_self', $accSelf)
        ->display('account.tpl');
 ?>
