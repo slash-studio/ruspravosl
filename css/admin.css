@@ -21,11 +21,15 @@ textarea {
 	border: 1px #bbb solid;
 }
 
-#save_text, .save_jury, .delete_jury, #enable_competitive {
+#reg_save_text, #save_text, .save_jury, .delete_jury, #enable_competitive {
 	padding: 7px 20px;
 	display: inline-block;
 	margin-right: 10px;
 	margin-top: 20px;
+}
+
+#save_text {
+	margin-bottom: 20px;
 }
 
 .delete_jury {
@@ -36,13 +40,13 @@ textarea {
 	background: darkred;
 }
 
-#text_edit label, form.form_jury label {
+#text_edit label, #reg_text_edit label, form.form_jury label {
 	display: block;
 	margin: 20px 0 10px;
 	font-weight: bold;
 }
 
-#text_head {
+#text_head, #reg_text_head {
 	width: 300px;
 }
 
@@ -60,4 +64,5 @@ form.form_jury h2 {
 #enable_competitive {
 	background: red;
 	margin-top: 60px;
+	margin-bottom: 70px;
 }
