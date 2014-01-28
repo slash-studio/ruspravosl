@@ -2,7 +2,7 @@
 {block name='links' append}
 	<link href="/css/header.css" rel="stylesheet" />
 	<link href="/css/footer.css" rel="stylesheet" />
-	<link href="/css/login_reg.css" rel="stylesheet" />
+	<link href="/css/reg.css" rel="stylesheet" />
 	<meta http-equiv="Refresh" content="4; URL=/includes/account.php">
 {/block}
 {block name='div.main'}

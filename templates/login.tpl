@@ -2,7 +2,7 @@
 {block name='links' append}
 	<link href="/css/header.css" rel="stylesheet" />
 	<link href="/css/footer.css" rel="stylesheet" />
-	<link href="/css/login_reg.css" rel="stylesheet" />
+	<link href="/css/login.css" rel="stylesheet" />
 {/block}
 {block name='div.main'}
 	{include file="header.tpl"}

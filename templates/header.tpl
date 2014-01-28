@@ -9,10 +9,16 @@
       <a href="/all_works">Все работы</a>
     </li>
     <li>
-      <a href="/">Положение о конкурсе</a>
+      <a href="/">Положение</a>
     </li>
     <li>
       <a href="/jury">Жюри</a>
+    </li>
+	<li>
+      <a href="/archiv">Архив</a>
+    </li>
+	<li>
+      <a href="/winers">Победители</a>
     </li>
     </ul>
   </nav>
