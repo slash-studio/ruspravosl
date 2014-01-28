@@ -8,7 +8,7 @@
 		<header>
 			<nav>
 				<ul>
-					<li><a href="/admin/main_news">Новость на главной странице</a></li>
+					<li><a href="/admin/main_news">Тексты</a></li>
 					<li><a href="/admin/jury">Редактирование жюри</a></li>
 					<li><a href="/admin/categories">Редактирование категорий</a></li>
 					<li><a href="/admin/photos">Работы с конкурса</a></li>
