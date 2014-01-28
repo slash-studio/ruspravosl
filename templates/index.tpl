@@ -3,7 +3,16 @@
   <link href="/css/header.css" rel="stylesheet" />
   <link href="/css/footer.css" rel="stylesheet" />
   <link href="/css/index.css" rel="stylesheet" />
-  <link href="/css/images.css" rel="stylesheet" />
+  <link href="/css/images.css" rel="stylesheet" />  
+  <link href="/colorbox/colorbox.css" rel="stylesheet" />
+  <script src="/colorbox/jquery.colorbox.js"></script>
+  <script>
+	{literal}
+	$(document).ready(function(){
+		$(".group1").colorbox({rel:'group1'});
+	});	
+	{/literal}
+  </script>
 {/block}
 {block name='div.main'}
   {include file="header.tpl"}
@@ -22,8 +31,8 @@
       <ul>
       {foreach from=$imgs item=img}
         <li>
-          <a href="#" class="block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
-          <a href="#" class="user">{$img.users_name} {$img.users_surname} ({$img.users_age} лет)</a>
+          <a href="/includes/uploads/{$img.images_id}_b.jpg" class="group1 block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
+          <a href="/profile/{$img.images_user_id}" class="user">{$img.users_name} {$img.users_surname} ({$img.users_age} лет)</a>
         </li>
       {/foreach}
       </ul>

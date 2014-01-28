@@ -9,7 +9,7 @@
   <div id="top_block">
     <form action="/registration" method="POST">
       <h1>Регистрация</h1>
-      <p style="font-weight: bold; color: red">{$errorMsg|default:''}</p>
+      <p class="error">{$errorMsg|default:''}</p>
       <div>
         <div>
           <label for="login">Логин:</label>

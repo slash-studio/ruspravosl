@@ -30,7 +30,7 @@ $(function(){
                     name: file_name
                   },
                   function(data){
-                    $array[$btn].siblings('ul').append('<li><a href="#" class="block not_checked" title="Работа не проверена"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><a href="#" class="likes"></a><div class="status_bar">Работа не проверена</div></li>');
+                    $array[$btn].siblings('ul').append('<li><a href="#" class="block not_checked" title="Работа не проверена"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><div class="status_bar">Работа не проверена</div></li>');
                   }
                );
             } else {

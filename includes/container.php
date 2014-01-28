@@ -7,6 +7,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/settings.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/constants.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/smarty/libs/Smarty.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.DataHandling.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.CompetitiveButton.php';
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/reg_auth.inc';
 
@@ -17,5 +18,8 @@ $smarty->force_compile = true;
 $data_h       = new DataHandling();
 $isAjaxScript = false;
 
-$smarty->assign('isLogin', Authentification::CheckCredentials());
+$result = $_competitiveButton->GetAll();
+
+$smarty->assign('isLogin', Authentification::CheckCredentials())
+	   ->assign('competitiveStatus', $result[0]['competitive_button_status']);
 ?>

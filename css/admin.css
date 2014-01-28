@@ -56,3 +56,8 @@ form.form_jury h2 {
 	font-size: 130%;
 	margin: 20px 0;
 }
+
+#enable_competitive {
+	background: red;
+	margin-top: 60px;
+}

@@ -4,6 +4,15 @@
   <link href="/css/footer.css" rel="stylesheet" />
   <link href="/css/account.css" rel="stylesheet" />
   <link href="/css/images.css" rel="stylesheet" />
+  <link href="/colorbox/colorbox.css" rel="stylesheet" />
+  <script src="/colorbox/jquery.colorbox.js"></script>
+  <script>
+	{literal}
+	$(document).ready(function(){
+		$(".group1").colorbox({rel:'group1'});
+	});	
+	{/literal}
+  </script>
   {if $acc_self == 1}<script src="/js/ajaxupload.3.5.js"></script>{/if}
   {if $acc_self == 1}<script src="/js/upload_photo.js"></script>{/if}
 {/block}
@@ -27,8 +36,8 @@
             <ul>
             {foreach from=$cat.imgs_info item=img}
             <li>
-            <a href="#" class="block {if $acc_self == 1}{if $img.images_status == 0}not_checked{elseif $img.images_status == 1}accepted{elseif $img.images_status == 2}rejected{/if}{/if}"
-						{if $acc_self == 1}title="{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}Работа принята!{elseif $img.images_status == 2}Работа отклонена!{/if}{/if}">
+            <a href="/includes/uploads/{$img.images_id}_b.jpg" class="group1 block {if $acc_self}{if $img.images_status == 0}not_checked{elseif $img.images_status == 1}accepted{elseif $img.images_status == 2}rejected{/if}{/if}"
+						{if $acc_self}title="{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}Работа принята!{elseif $img.images_status == 2}Работа отклонена!{/if}{/if}">
 				<img src="/includes/uploads/{$img.images_id}_s.jpg" />
 			</a>
 			{if $acc_self}<div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{/if}</div>{/if}

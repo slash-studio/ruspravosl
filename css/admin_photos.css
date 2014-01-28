@@ -71,17 +71,28 @@ div.imgs div.admin div.panel {
 div.imgs div.admin div.panel button {
 	height: 20px;
 	width: 20px;
+	background-image: url(/images/icons.png);
+	background-repeat: no-repeat;
 	margin-left: 5px;
 }
 
 div.imgs div.admin div.panel button.accept {
-	
+	background-position: 1px 0;
+}
+
+div.imgs div.admin div.panel button.accept:hover {
+	background-color: green;
 }
 
 div.imgs div.admin div.panel button.reject {
+	background-position: -17px 0;
+}
 
+div.imgs div.admin div.panel button.reject:hover {
+	background-color: red;
 }
 
 div.imgs div.admin div.panel button.delete {
-
+	background-position: -34px 1px;
+	margin-left: 150px;
 }

@@ -3,6 +3,15 @@
   <link href="/css/images.css" rel="stylesheet" />
   <link href="/css/admin_photos.css" rel="stylesheet" />
   <script src="/js/admin.photos.js"></script>
+  <link href="/colorbox/colorbox.css" rel="stylesheet" />
+  <script src="/colorbox/jquery.colorbox.js"></script>
+  <script>
+	{literal}
+	$(document).ready(function(){
+		$(".group1").colorbox({rel:'group1'});
+	});	
+	{/literal}
+  </script>
 {/block}
 {block name="div.main"}
   <aside>{$menu}</aside>
@@ -16,11 +25,11 @@
       <ul>
       {foreach from=$images item=img}
         <li>
-          <a href="#" class="block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
-          <a href="#" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age})</a>
+          <a href="/includes/uploads/{$img.images_id}_b.jpg" class="group1 block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
+          <a href="/profile/{$img.images_user_id}" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age})</a>
           <div class="admin">
              <div class="panel">
-                <button data-id="{$img.images_id}" data-value="1" class="accept edit_status">V</button><button data-id="{$img.images_id}" data-value="2" class="reject edit_status">Л</button><button data-id="{$img.images_id}" class="delete">X</button>
+                <button data-id="{$img.images_id}" data-value="1" class="accept edit_status"></button><button data-id="{$img.images_id}" data-value="2" class="reject edit_status"></button><button data-id="{$img.images_id}" class="delete"></button>
              </div>
           </div>
         </li>

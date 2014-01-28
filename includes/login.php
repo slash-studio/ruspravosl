@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
    }
 }
 
+
 $smarty->assign('login', isset($login) ? $login : '')
        ->assign('fromUri', $fromUri)
        ->assign('errorMsg', isset($errorMsg) ? $errorMsg : false)

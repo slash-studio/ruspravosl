@@ -2,7 +2,6 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/container.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Category.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Image.php';
-require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.CompetitiveButton.php';
 
 $userId = isset($request[1]) ? $request[1] : null;
 
@@ -20,9 +19,8 @@ if (empty($userId)) {
    }
    $accSelf = $userAuth->isExist && $userAuth->id == $userId;
 }
-$result = $_competitiveButton->GetAll();
-$smarty->assign('competitiveStatus', $result[0]['competitive_button_status'])
-       ->assign('cats', $_category->MakeAccountTree($user->id))
+
+$smarty->assign('cats', $_category->MakeAccountTree($user->id))
        ->assign('id', $user->id)
        ->assign('login', $user->login)
        ->assign('fullname', $user->name . ' ' . $user->surname)

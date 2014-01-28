@@ -29,9 +29,9 @@
       <li>
         <a href="/login">Войти</a>
       </li>
-      <li>
+      {if $competitiveStatus}<li>
         <a href="/registration">Регистрация</a>
-      </li>
+      </li>{/if}
     {/if}
     </ul>
   </nav>
