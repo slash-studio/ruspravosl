@@ -9,7 +9,7 @@
     <input class="jury_head" name="name" id="jury_head_{$smarty.foreach.foo.index}" value="{$judge.jury_name}" />
     <label for="jury_body_{$smarty.foreach.foo.index}">Текст:</label>
     <textarea class="jury_body" name="info" id="jury_body_{$smarty.foreach.foo.index}" rows="5" cols="70">{$judge.jury_info}</textarea>
-    <button class="save_jury" name="mode" value="Update">Сохранить</button><button class="delete_jury" name="mode" value="Delete">Удалить</button>
+    <button class="save_jury normal" name="mode" value="Update">Сохранить</button><button class="delete_jury normal" name="mode" value="Delete">Удалить</button>
   </form>
   {/foreach}
   <form action="/admin/jury" method="post" class="form_jury">
@@ -18,7 +18,7 @@
     <input class="jury_head" name="name" id="jury_head_new" value="" />
     <label for="jury_body_new">Текст:</label>
     <textarea class="jury_body" name="info" id="jury_body_new" rows="5" cols="70"></textarea>
-    <button class="save_jury" name="mode" value="Insert">Добавить</button>
+    <button class="save_jury normal" name="mode" value="Insert">Добавить</button>
   </form>
 </div>
 {/block}

@@ -8,7 +8,7 @@
 		<input id="text_head" name="text_head" value="{$mainNews[0].main_news_text_head}" />
 		<label for="text_body">Текст:</label>
 		<textarea id="text_body" name="text_body" rows="10" cols="100">{$mainNews[0].main_news_text_body}</textarea>
-		<button id="save_text" name="save" value="Update">Сохранить</button>
+		<button id="save_text" class="normal" name="save" value="Update">Сохранить</button>
 	  </form>
   </section>
   <section>
@@ -18,12 +18,8 @@
 		<input id="reg_text_head" name="text_head" value="" />
 		<label for="reg_text_body">Текст:</label>
 		<textarea id="reg_text_body" name="text_body" rows="10" cols="100"></textarea>
-		<button id="reg_save_text" name="save" value="Update">Сохранить</button>
+		<button id="reg_save_text" class="normal" name="save" value="Update">Сохранить</button>
 	  </form>
   </section>
-  <form action="/admin/main_news" method="post" id="enable_competitive_form">
-    <input type="hidden" class="jury_id" name="competitive_status" value="{1 - $competitiveStatus}" />
-    <button id="enable_competitive" name="enable_competitive" value="enable_competitive">{if $competitiveStatus==1}Закончить{else}Начать{/if} конкурс!</button>
-  </form>
 </div>
 {/block}

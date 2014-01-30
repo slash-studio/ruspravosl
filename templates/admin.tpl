@@ -10,8 +10,8 @@
 				<ul>
 					<li><a href="/admin/main_news">Тексты</a></li>
 					<li><a href="/admin/jury">Редактирование жюри</a></li>
-					<li><a href="/admin/categories">Редактирование категорий</a></li>
-					<li><a href="/admin/photos">Работы с конкурса</a></li>
+					<li><a href="/admin/contests">Конкурсы</a></li>
+					<li><a href="/admin/photos">Работы с текущего конкурса</a></li>
 				</ul>
 			</nav>
 		</header>

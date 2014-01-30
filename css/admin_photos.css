@@ -94,5 +94,23 @@ div.imgs div.admin div.panel button.reject:hover {
 
 div.imgs div.admin div.panel button.delete {
 	background-position: -34px 1px;
-	margin-left: 150px;
+	margin-left: 100px;
 }
+
+div.imgs div.admin div.panel button.win {
+	background-position: -34px 1px;
+}
+
+div.imgs div.admin div.panel button.win:hover {
+	background-color: green;
+}
+
+div.imgs div.status_bar {
+	height: 20px;
+	border: 0;
+	margin-top: 5px;
+}
+
+.green { color: green; }
+
+.red { color: red; }

@@ -24,7 +24,9 @@
     <span class="info">Имя: <b>{$fullname}</b></span>
     <span class="info">Возраст: <b>{$age}</b></span>
     {if $acc_self}<span class="info">Адрес: <b>{$address}</b></span>{/if}
-    <span class="info">Школа: <b>{$school}</b></span>
+	{if $acc_self}<span class="info">Ваш педагог: <b>{$teacher}</b></span>{/if}
+	{if $acc_self}<span class="info">Телефон: <b>{$phone}</b></span>{/if}
+    <span class="info">Место учебы: <b>{$school}</b></span>
     <div class="imgs">
       <h2>Загруженные фотографии</h2>
       {foreach from=$cats item=rootCat}
@@ -40,7 +42,7 @@
 						{if $acc_self}title="{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}Работа принята!{elseif $img.images_status == 2}Работа отклонена!{/if}{/if}">
 				<img src="/includes/uploads/{$img.images_id}_s.jpg" />
 			</a>
-			{if $acc_self}<div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{/if}</div>{/if}
+			{if $acc_self}<div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{elseif $img.images_status == 3}<span class="green">Победитель!</span>{/if}</div>{/if}
 			{if $acc_self}<button class="x" data="{$img.images_id}">x</button>{/if}
             </li>
             {/foreach}
