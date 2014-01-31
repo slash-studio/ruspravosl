@@ -39,28 +39,37 @@ CREATE TABLE IF NOT EXISTS `texts` (
 );
 
 INSERT INTO `texts`(`text_head`, `text_body`) VALUES
-   ('Конкурс начался!', 'Конкурс предусматривает два этапа. В ноябре во всех военных округах пройдет первый отборочный тур. Второй тур и заключительный концерт лауреатов конкурса состоятся в Москве в сентябре будущего года. Для каждого военного оркестра обязательным является исполнение Государственного гимна России, а также ряда других произведений - "Славься" М. Глинки, "Развод караулов" В. Павлова, "Красная заря" С. Чернецкого, военных маршей и плац-концертов.');
-
-
-INSERT INTO `texts`(`text_head`, `text_body`) VALUES
+   ('Конкурс начался!', 'Конкурс предусматривает два этапа. В ноябре во всех военных округах пройдет первый отборочный тур. Второй тур и заключительный концерт лауреатов конкурса состоятся в Москве в сентябре будущего года. Для каждого военного оркестра обязательным является исполнение Государственного гимна России, а также ряда других произведений - "Славься" М. Глинки, "Развод караулов" В. Павлова, "Красная заря" С. Чернецкого, военных маршей и плац-концертов.'),
    ('Регистрация', 'Для участия в конкурсе сфотографируйте свои работы либо сделайте скан-копии рисунков. Заполните поля регистрационной формы. Не забудьте указать телефон родителей или учителя, чтобы организаторы конкурса могли связаться с вашими представителями. Получите собственный аккаунт. Это ваша страничка в конкурсе, где вы можете выложить фотографии своих работ. Не стоит ждать, что жюри примет решение на следующий день. Жюри будет работать до 18 апреля 2014 года. До этого срока под фотографией своей работой вы увидите принята она к следующему этапу конкурса или отклонена. Официально результаты будут объявлены 24 мая 2014 года.');
+
+CREATE TABLE IF NOT EXISTS `contest` (
+   `id`           INT(11)      NOT NULL AUTO_INCREMENT,
+   `name`         VARCHAR(150) NOT NULL,
+   `contest_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   `status`       INT(1)       NOT NULL DEFAULT 0,
+   PRIMARY KEY (`id`)
+);
+
 CREATE TABLE IF NOT EXISTS `categories` (
-   `id`        INT         NOT NULL AUTO_INCREMENT,
-   `name`      VARCHAR(80) NOT NULL,
-   `parent_id` INT,
-   `path`      VARCHAR(50) NOT NULL DEFAULT '0',
+   `id`         INT         NOT NULL AUTO_INCREMENT,
+   `name`       VARCHAR(80) NOT NULL,
+   `parent_id`  INT,
+   `path`       VARCHAR(50) NOT NULL DEFAULT '0',
+   `contest_id` INT         NOT NULL,
    PRIMARY KEY(`id`),
-   FOREIGN KEY (`parent_id`) REFERENCES `categories` (`id`)
+   FOREIGN KEY (`parent_id`)  REFERENCES `categories` (`id`) ON DELETE CASCADE,
+   FOREIGN KEY (`contest_id`) REFERENCES `contest` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `images` (
-   `id`          INT(11) NOT NULL AUTO_INCREMENT,
-   `user_id`     INT(11) NOT NULL,
-   `category_id` INT     NOT NULL,
-   `status`      INT(1)  NOT NULL DEFAULT 0,
+   `id`          INT(11)     NOT NULL AUTO_INCREMENT,
+   `user_id`     INT(11)     NOT NULL,
+   `category_id` INT         NOT NULL,
+   `name`        VARCHAR(50) NOT NULL,
+   `status`      INT(1)      NOT NULL DEFAULT 0,
    PRIMARY KEY (`id`),
    FOREIGN KEY (`user_id`)     REFERENCES `users`(`id`),
-   FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`)
+   FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `competitive_button` (
@@ -69,10 +78,27 @@ CREATE TABLE IF NOT EXISTS `competitive_button` (
    PRIMARY KEY (`id`)
 );
 
-INSERT INTO `competitive_button`(`status`) VALUES(1);
+INSERT INTO `competitive_button`(`status`) VALUES(0);
+
+DELIMITER //
+
+CREATE TRIGGER `insert_contest` AFTER INSERT ON `contest`
+FOR EACH ROW BEGIN
+   DECLARE last_cat_id INT;
+   SET last_cat_id = (SELECT id FROM categories ORDER BY id DESC LIMIT 1);
+   IF ISNULL(last_cat_id) THEN
+      SET last_cat_id = 1;
+   END IF;
+   INSERT INTO `categories`(`id`, `name`, `parent_id`, `path`, `contest_id`) VALUES
+      (last_cat_id + 1, 'Художественное искусство', last_cat_id + 1, CONCAT(last_cat_id + 1, '.'), new.id),
+      (last_cat_id + 2, 'Традиции православной культуры', last_cat_id + 1, CONCAT(last_cat_id + 2, '.', last_cat_id + 1, '.'), new.id),
+      (last_cat_id + 3, 'Моя Родина', last_cat_id + 1, CONCAT(last_cat_id + 3, '.', last_cat_id + 1, '.'), new.id),
+      (last_cat_id + 4, 'Декоративно-прикладное искусство', last_cat_id + 4, CONCAT(last_cat_id + 4, '.'), new.id),
+      (last_cat_id + 5, 'Традиции православной культуры', last_cat_id + 5, CONCAT(last_cat_id + 5, '.', last_cat_id + 4, '.'), new.id);
+END
+//
 
 DROP TRIGGER IF EXISTS `insert_categories`;
-DELIMITER //
 CREATE TRIGGER `insert_categories` BEFORE INSERT ON `categories`
 FOR EACH ROW BEGIN
    IF new.parent_id = -1 THEN
@@ -81,15 +107,6 @@ FOR EACH ROW BEGIN
 END
 //
 DELIMITER ;
-
-INSERT INTO `categories`(`id`, `name`, `parent_id`, `path`) VALUES
-   (1, 'Художественное искусство', 1, '1.'),
-   (2, 'Традиции православной культуры', 1, '1.2.'),
-   (3, 'Святые защитники Руси', 1, '1.3.'),
-   (4, 'Моя Родина', 1, '4.1.'),
-   (5, 'Декоративно-прикладное искусство', 5, '5.'),
-   (6, 'Традиции православной культуры', 5, '5.6.'),
-   (7, 'Святые защитники Руси', 5, '5.7.');
 
 DROP TRIGGER IF EXISTS `insert_users`;
 

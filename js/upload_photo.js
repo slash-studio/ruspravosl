@@ -13,6 +13,11 @@ $(function(){
                category_id: $data[1]
             },
          onSubmit: function(file, ext){
+			$name = prompt('Введите название работы');
+			if (!$name) {
+                  return false;
+			}
+			this._settings.data.work_name = $name;
             if (!(ext && /^(jpg|jpeg)$/.test(ext))) {
                // extension is not allowed
                alert('This extension is not allowed. Only JPG.');
@@ -22,7 +27,8 @@ $(function(){
          onComplete: function(file, response) {
             //Add uploaded file to list
             $btn = this._settings.data.category_id;
-            if(response != "error") {
+			$name = this._settings.data.work_name;
+            if(response != "error") {			   
                file_name = response;
                $.post(
                   "/includes/rename.php",
@@ -30,7 +36,7 @@ $(function(){
                     name: file_name
                   },
                   function(data){
-                    $array[$btn].siblings('ul').append('<li><a href="#" class="block not_checked" title="Работа не проверена"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><div class="status_bar">Работа не проверена</div></li>');
+                    $array[$btn].siblings('ul').append('<li><a href="#" class="block not_checked" title="Работа не проверена"><img src="/includes/uploads/' + file_name + '_s.jpg" /></a><button class="x" data="' + file_name + '">x</button><div class="name">"' + $name + '"</div><div class="status_bar">Работа не проверена</div></li>');
                   }
                );
             } else {

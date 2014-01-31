@@ -32,6 +32,7 @@
       {foreach from=$imgs item=img}
         <li>
           <a href="/includes/uploads/{$img.images_id}_b.jpg" class="group1 block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
+		  <div class="name">"{$img.images_name}"</div>
           <a href="/profile/{$img.images_user_id}" class="user">{$img.users_name} {$img.users_surname} ({$img.users_age} лет)</a>
         </li>
       {/foreach}

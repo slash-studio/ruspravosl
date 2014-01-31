@@ -27,6 +27,10 @@ class Image extends Entity
             'status',
             null
          ),
+		 new Field(
+            'name',
+            null
+         )
       );
 
       $this->orderFields = Array('rand' => null);
@@ -130,6 +134,7 @@ class Image extends Entity
    public function Delete($id)
    {
       parent::Delete($id);
+	  @unlink($_SERVER['DOCUMENT_ROOT'] . '/includes/uploads/' . $id . '.jpg');
       @unlink($_SERVER['DOCUMENT_ROOT'] . '/includes/uploads/' . $id . '_b.jpg');
       @unlink($_SERVER['DOCUMENT_ROOT'] . '/includes/uploads/' . $id . '_s.jpg');
    }

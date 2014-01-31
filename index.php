@@ -71,9 +71,9 @@ switch ($request[0]) {
             require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.text.php';
             break;
 
-         case 'categories':
-            require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.categories.php';
-            break;
+         case 'contests':
+            require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.contests.php';
+            break; 
 
          case 'photos':
             require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.photos.php';

@@ -21,9 +21,5 @@
       <button id="reg_save_text" name="save" value="Update">Сохранить</button>
     </form>
   </section>
-  <form action="/admin/texts" method="post" id="enable_competitive_form">
-    <input type="hidden" class="jury_id" name="competitive_status" value="{1 - $competitiveStatus}" />
-    <button id="enable_competitive" name="enable_competitive" value="enable_competitive">{if $competitiveStatus==1}Закончить{else}Начать{/if} конкурс!</button>
-  </form>
 </div>
 {/block}

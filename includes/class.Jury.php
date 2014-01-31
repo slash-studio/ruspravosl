@@ -21,10 +21,7 @@ class Jury extends Entity
             Array('IsNotEmpty')
          ),
          new Field(
-            'info',
-            null,
-            true,
-            Array('IsNotEmpty')
+            'info'
          )
       );
    }

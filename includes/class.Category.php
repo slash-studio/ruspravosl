@@ -28,6 +28,12 @@ class Category extends Entity
             Array('IsNotEmpty')
          ),
          new Field(
+            'contest_id',
+            null,
+            true,
+            Array('IsNotEmpty')
+         ),
+         new Field(
             'path',
             null,
             false,
@@ -118,9 +124,12 @@ class Category extends Entity
       return $result;
    }
 
-   private function SetTreeParams($func = 'GetAll')
+   private function SetTreeParams($id, $func = 'GetAll')
    {
+      $this->CheckSearch();
+      $this->search->AddClause(PackParam(static::TABLE, $this->GetFieldByName('contest_id')), $id);
       $result    = $this->$func();
+      $this->search->RemoveLastClause();
       $names     = Array();
       $vertex    = Array();
       $sub_trees = Array();
@@ -148,10 +157,11 @@ class Category extends Entity
       return Array($tree, $names);
    }
 
-   public function MakeMenutree($id, $isAdminMenu = false)
+   public function MakeMenutree($contest_id, $id, $isAdminMenu = false)
    {
+      if (empty($contest_id)) return '';
       $id = empty($id) ? -1 : $id;
-      list($tree, $names) = $this->SetTreeParams();
+      list($tree, $names) = $this->SetTreeParams($contest_id);
       $resName  = !empty($names[$id]) ? $names[$id][$this->ToPrfxNm('name')] : null;
       $resPName = null;
       if (!empty($resName)) {
@@ -216,7 +226,7 @@ class Category extends Entity
             $subcat['imgs_info'] = Array();
             foreach ($images as $image) {
                if ($subcat['categories_id'] == $image['images_category_id']) {
-                  $subcat['imgs_info'][] = Array('images_id' => $image['images_id'], 'images_status' => $image['images_status']);
+                  $subcat['imgs_info'][] = $image;
                }
             }
          }
@@ -224,9 +234,10 @@ class Category extends Entity
       return $roots;
    }
 
-   public function MakeAdminTree()
+   public function MakeAdminTree($id)
    {
-      list($tree, $names) = $this->SetTreeParams();
+      if (empty($id)) return '';
+      list($tree, $names) = $this->SetTreeParams($id);
       $buildTree = function ($t, $th) use (&$buildTree, $names) {
          if (!count($t)) {
             return '';
@@ -254,9 +265,10 @@ class Category extends Entity
       return isset($tree) ? $buildTree($tree, $this) : '';
    }
 
-   public function MakeSelectTree($forCategory = true)
+   public function MakeSelectTree($id, $forCategory = true)
    {
-      list($tree, $names) = $this->SetTreeParams('GetNames');
+      if (empty($id)) return '';
+      list($tree, $names) = $this->SetTreeParams($id, 'GetNames');
       $buildTree = function ($t, $th, $depth) use (&$buildTree, $names, $forCategory) {
          if (!count($t)) {
             return '';

@@ -58,8 +58,8 @@ try {
    }
    $handler = new CategoryHandler();
    $handler->Handle($_POST);
-   $ajaxResult['table']   = $_category->MakeAdminTree();
-   $ajaxResult['selects'] = $_category->MakeSelectTree();
+   $ajaxResult['table']   = $_category->MakeAdminTree($_POST['params']['contest_id']);
+   $ajaxResult['selects'] = $_category->MakeSelectTree($_POST['params']['contest_id']);
 } catch (Exception $e) {
    $ajaxResult['result']  = false;
    $ajaxResult['message'] = $e->getMessage();

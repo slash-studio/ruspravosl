@@ -28,6 +28,14 @@ class Entity
       $this->order = new SQLOrder();
    }
 
+   public function Reset()
+   {
+      $this->order = new SQLOrder();
+      $this->UnsetSelectValues();
+      $this->ResetSearch();
+      return $this;
+   }
+
    public function AddOrder($fieldName, $orderType = OT_ASC)
    {
       if (array_key_exists($fieldName, $this->orderFields)) {

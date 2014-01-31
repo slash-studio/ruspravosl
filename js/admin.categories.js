@@ -96,19 +96,16 @@ $(document).on('submit', 'form.edit-form', function() {
    var pid = $this.find('#category_id option:selected').val();
    pid = editType != 'Insert' && pid == -1 ? aid : pid;
    var aname = $.trim($('#category_name').val());
-   // alert(aname);
-   // alert(editType);
-   // alert(aid);
-   // alert(pid);
    $.post(
          "/includes/handler.Category.php",
          {
-            mode : editType,
+            mode :   editType,
             params :
                    {
                       id : aid,
                       parent_id : pid,
-                      name : aname
+                      name : aname,
+                      contest_id: $(this).attr('data')
                    }
          },
          function(data) {
@@ -142,7 +139,8 @@ $(document).on('submit', 'form.edit-form', function() {
             } else {
                alert(data.message);
             }
-         }, "json"
+         },
+         "json"
       );
    return false;
 });

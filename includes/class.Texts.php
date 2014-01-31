@@ -15,16 +15,10 @@ class Texts extends Entity
             false
          ),
          new Field(
-            'text_head',
-            null,
-            true,
-            Array('IsNotEmpty')
+            'text_head'
          ),
          new Field(
-            'text_body',
-            null,
-            true,
-            Array('IsNotEmpty')
+            'text_body'
          )
       );
    }

@@ -110,7 +110,7 @@ class SQLOrder
       $result = '';
       $amount = count($this->fields);
       foreach ($this->fields as $key => $field) {
-         $result .= !empty($field['info']) ? SQL::ToTblNm($field['info'][0], $field['info'][1]->name) : ''
+         $result .= (!empty($field['info']) ? SQL::ToTblNm($field['info'][0], $field['info'][1]->name) : '')
                   . ' '
                   . $field['type']
                   . ($key < $amount - 1 ? ', ' : '');
