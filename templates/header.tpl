@@ -7,7 +7,7 @@
       <li><a href="/">Положение</a></li>
       <li><a href="/jury">Жюри</a></li>
       <li><a href="/archive">Архив</a></li>
-      <li><a href="/winners">Победители</a></li>
+      {if isset($competitiveStatus)}<li><a href="/winners">Победители</a></li>{/if}
     </ul>
   </nav>
   <nav class="right">
@@ -16,7 +16,7 @@
       <li><a href="/profile">Мой аккаунт</a></li>
       <li id="logout"><a href="/registration">Выход</a></li>
     {else}
-      <li><a href="/login">Войти</a></li>
+      {if isset($competitiveStatus)}<li><a href="/login">Войти</a></li>{/if}
       {if $competitiveStatus}<li><a href="/registration">Регистрация</a></li>{/if}
     {/if}
     </ul>

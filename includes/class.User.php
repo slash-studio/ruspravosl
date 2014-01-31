@@ -59,6 +59,9 @@ class User extends Entity
             NULL,
             true,
             Array('IsSetVar', 'IsNotEmptyString')
+         ),
+         new Field(
+            'contest_id'
          )
       );
    }
@@ -76,10 +79,10 @@ class User extends Entity
       return $result;
    }
 
-   public function GetCatalogView($category = null, $age = -1)
+   public function GetCatalogView($contest_id, $category = null, $age = -1)
    {
       global $_image;
-      $images = $_image->CreateSearchForCatalog($category)->GetAll();
+      $images = $_image->CreateSearchForCatalog($category, $contest_id)->GetAll();
       $users = $this->GetAll();
       $result   = Array();
       $usersRes = Array();

@@ -2,6 +2,10 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/connect.php';
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Texts.php';
 
+if ($contest_status != 1) {
+  header('Location: /');
+}
+
 if (isset($_POST['submit'])) {
    $post    = array_map('strip_tags', array_map('trim', $_POST));
    $pass    = $post['pass'];
@@ -22,8 +26,9 @@ if (isset($_POST['submit'])) {
              ->validatePositiveNum($age)
              ->validateRepeatPasswords($pass, $repass)
              ->validatePassword($pass)
-             ->validatePhone($phone);
-      Registration::Register($login, $pass, $name, $surname, $teacher, $phone, $age, $address, $school);
+             ->validatePhone($phone)
+             ->validateAge($age);
+      Registration::Register($login, $pass, $name, $surname, $teacher, $phone, $age, $address, $school, $lastContest['contest_id']);
       unset($_SESSION['regInfo']);
       header("Location: /success_reg");
    } catch (Exception $e) {

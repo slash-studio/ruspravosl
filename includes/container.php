@@ -19,11 +19,12 @@ $smarty->force_compile = true;
 $data_h       = new DataHandling();
 $isAjaxScript = false;
 
-$result = $_contest->GetLastContest();
-$contest_status = !empty($result) ? $result['contest_status'] : 0;
+$lastContest = $_contest->GetLastContest();
+$contest_status = !empty($lastContest) ? $lastContest['contest_status'] : null;
+$contestID = !empty($lastContest) ? $lastContest['contest_id'] : -1;
 $_contest->Reset();
 
-$smarty->assign('isLogin', Authentification::CheckCredentials())
+$smarty->assign('isLogin', Authentification::CheckCredentials($contestID))
 	    ->assign('competitiveStatus', $contest_status);
 
 ?>

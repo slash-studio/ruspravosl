@@ -6,13 +6,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/lib/cookie.inc';
 
 class Authentification
 {
-   public static function CheckCredentials()
+   public static function CheckCredentials($contest_id)
    {
       $isAuth = true;
       if (empty($_SESSION['login'])) {
          try {
             $cookie = new Cookie();
-            $cookie->Validate();
+            $cookie->Validate($contest_id);
             AuthorizedUser::authorize($cookie->GetLogin(), $cookie->GetPass());
          } catch (CookieException $e) {
             $isAuth = false;
@@ -38,26 +38,28 @@ class Registration
       $phone,
       $age,
       $address,
-      $school
+      $school,
+      $contest_id
    )
    {
       global $db, $data_h;
-      $user = new UserDB($login);
+      $user = new UserDB($login, $contest_id);
       $user->salt = Encryption::generateRandomString();
       $user->password = $password;
 
       if ($user->isExist) {
          throw new Exception(ERROR_LOGIN_ALREADY_REGISTERED);
       } else {
-         $user->name    = $name;
-         $user->school  = $school;
-         $user->surname = $surname;
-         $user->teacher = $teacher;
-         $user->phone   = $phone;
-         $user->age     = $age;
-         $user->address = $address;
+         $user->name       = $name;
+         $user->school     = $school;
+         $user->surname    = $surname;
+         $user->teacher    = $teacher;
+         $user->phone      = $phone;
+         $user->age        = $age;
+         $user->address    = $address;
+         $user->contest_id = $contest_id;
          $user->Insert();
-         $user = new UserDB($login);
+         $user = new UserDB($login, $contest_id);
          AuthorizedUser::authorize($login, $user->password, true);
       }
    }
@@ -68,10 +70,11 @@ class Registration
 
 class AuthorizedUser
 {
-   public static function Login($login, $pass)
+   public static function Login($login, $pass, $contest_id)
    {
       global $db;
-      $user = UserDB::FindByLogin($login);
+      $user = UserDB::FindByLogin($login, $contest_id);
+      print_r($user);
       if (!$user->isExist) {
          throw new Exception(ERROR_LOGIN);
       }

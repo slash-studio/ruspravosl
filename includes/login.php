@@ -2,7 +2,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/connect.php';
 
 $fromUri = isset($_GET['originating_uri']) ? $_GET['originating_uri'] : '/profile';
-if (Authentification::CheckCredentials()) {
+if (Authentification::CheckCredentials($contestID)) {
    header("Location: /profile");
 }
 $isException = false;
@@ -14,8 +14,8 @@ if (isset($_POST['submit'])) {
       $data_h->validateForm($post, ERROR_LOGIN)
              ->validateLogin($login, ERROR_LOGIN)
              ->validatePassword($pass, ERROR_LOGIN);
-      AuthorizedUser::Login($login, $pass);
-      header("Location: $fromUri");
+      AuthorizedUser::Login($login, $pass, $contestID);
+      // header("Location: $fromUri");
    } catch (Exception $e) {
       $isException = true;
       $errorMsg = $e->getMessage();

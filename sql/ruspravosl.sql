@@ -8,6 +8,14 @@ ON `ruspravosl`.*
 TO `smite`@localhost IDENTIFIED BY 'smite107';
 
 
+CREATE TABLE IF NOT EXISTS `contest` (
+   `id`           INT(11)      NOT NULL AUTO_INCREMENT,
+   `name`         VARCHAR(150) NOT NULL,
+   `contest_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   `status`       INT(1)       NOT NULL DEFAULT 0,
+   PRIMARY KEY (`id`)
+);
+
 CREATE TABLE IF NOT EXISTS `users` (
    `id`          INT          NOT NULL AUTO_INCREMENT,
    `login`       VARCHAR(45)  NOT NULL,
@@ -20,8 +28,10 @@ CREATE TABLE IF NOT EXISTS `users` (
    `school`      VARCHAR(80)  NOT NULL,
    `password`    CHAR(50)     NOT NULL,
    `salt`        VARCHAR(8)   NOT NULL,
+   `contest_id`  INT         NOT NULL,
    PRIMARY KEY(`id`),
-   UNIQUE KEY(`login`)
+   UNIQUE KEY(`login`, `contest_id`),
+   FOREIGN KEY (`contest_id`) REFERENCES `contest` (`id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `jury` (
@@ -42,14 +52,6 @@ INSERT INTO `texts`(`text_head`, `text_body`) VALUES
    ('Конкурс начался!', 'Конкурс предусматривает два этапа. В ноябре во всех военных округах пройдет первый отборочный тур. Второй тур и заключительный концерт лауреатов конкурса состоятся в Москве в сентябре будущего года. Для каждого военного оркестра обязательным является исполнение Государственного гимна России, а также ряда других произведений - "Славься" М. Глинки, "Развод караулов" В. Павлова, "Красная заря" С. Чернецкого, военных маршей и плац-концертов.'),
    ('Регистрация', 'Для участия в конкурсе сфотографируйте свои работы либо сделайте скан-копии рисунков. Заполните поля регистрационной формы. Не забудьте указать телефон родителей или учителя, чтобы организаторы конкурса могли связаться с вашими представителями. Получите собственный аккаунт. Это ваша страничка в конкурсе, где вы можете выложить фотографии своих работ. Не стоит ждать, что жюри примет решение на следующий день. Жюри будет работать до 18 апреля 2014 года. До этого срока под фотографией своей работой вы увидите принята она к следующему этапу конкурса или отклонена. Официально результаты будут объявлены 24 мая 2014 года.');
 
-CREATE TABLE IF NOT EXISTS `contest` (
-   `id`           INT(11)      NOT NULL AUTO_INCREMENT,
-   `name`         VARCHAR(150) NOT NULL,
-   `contest_date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-   `status`       INT(1)       NOT NULL DEFAULT 0,
-   PRIMARY KEY (`id`)
-);
-
 CREATE TABLE IF NOT EXISTS `categories` (
    `id`         INT         NOT NULL AUTO_INCREMENT,
    `name`       VARCHAR(80) NOT NULL,
@@ -68,7 +70,7 @@ CREATE TABLE IF NOT EXISTS `images` (
    `name`        VARCHAR(50) NOT NULL,
    `status`      INT(1)      NOT NULL DEFAULT 0,
    PRIMARY KEY (`id`),
-   FOREIGN KEY (`user_id`)     REFERENCES `users`(`id`),
+   FOREIGN KEY (`user_id`)     REFERENCES `users`(`id`) ON DELETE CASCADE,
    FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`) ON DELETE CASCADE
 );
 

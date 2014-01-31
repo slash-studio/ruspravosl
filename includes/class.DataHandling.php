@@ -14,6 +14,14 @@
          return $this;
       }
 
+      public function validateAge($age, $message = ERROR_AGE_RANGE)
+      {
+         if ($age > 31 || $age < 8) {
+            throw new Exception($message);
+         }
+         return $this;
+      }
+
       public function validateEmail($mail, $message = INCORRECT_MAIL)
       {
          if (!preg_match('/^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/', $mail)) {

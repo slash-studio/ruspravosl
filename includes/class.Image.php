@@ -36,7 +36,7 @@ class Image extends Entity
       $this->orderFields = Array('rand' => null);
    }
 
-   public function CreateSearchForCatalog($category = null)
+   public function CreateSearchForCatalog($category, $contest_id)
    {
       unset($this->search);
 
@@ -52,9 +52,14 @@ class Image extends Entity
          $whereParams[] = "%.$category.%";
          $whereFields[] = PackParam(Category::TABLE, $_category->GetFieldByName('path'), $hasClause, 'OR', '', ')');
       }
-      $joins = Array(Category::TABLE => Array(null, Array('category_id', 'id')));
+      global $_user;
+      $joins = Array(
+            Category::TABLE => Array(null, Array('category_id', 'id')),
+            User::TABLE     => Array(null, Array('user_id', 'id'))
+      );
 
       $this->search = new Search(self::TABLE, $whereFields, $whereParams, $joins);
+      $this->search->AddClause(PackParam(User::TABLE, $_user->GetFieldByName('contest_id'), $hasClause, 'AND'), $contest_id);
       return $this;
    }
 

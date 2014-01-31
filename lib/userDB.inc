@@ -8,56 +8,43 @@ class UserDB
       $id;
 
    public
-      $age      = '',
-      $salt     = '',
-      $name     = '',
-      $phone    = '',
-      $login    = '',
-      $school   = '',
-      $surname  = '',
-      $teacher  = '',
-      $address  = '',
-      $password = '';
+      $age        = '',
+      $salt       = '',
+      $name       = '',
+      $phone      = '',
+      $login      = '',
+      $school     = '',
+      $surname    = '',
+      $teacher    = '',
+      $address    = '',
+      $password   = '',
+      $contest_id = '';
 
    public $isExist = false;
 
-   public static function GetIdByLogin($login)
+   public static function FindByLogin($login, $contest_id)
    {
       global $db;
-      $data = $db->query('SELECT id FROM users WHERE login = ?', Array($login));
-      return $data[0]['id'];
-   }
-
-   public static function GetLoginById($id)
-   {
-      global $db;
-      $data = $db->query('SELECT login FROM users WHERE id = ?', Array($id));
-      return $data[0]['login'];
-   }
-
-   public static function FindByLogin($login)
-   {
-      global $db;
-      $data = $db->Query('SELECT id FROM users WHERE login = ?', Array($login));
-      return new UserDB(!empty($data) ? $login : null);
+      $data = $db->Query('SELECT id FROM users WHERE login = ? AND contest_id = ?', Array($login, $contest_id));
+      return new UserDB(!empty($data) ? $login : null, $contest_id);
    }
 
    public static function FindById($id)
    {
       global $db;
-      $data = $db->query('SELECT login FROM users WHERE id = ?', Array($id));
-      return new UserDB(!empty($data) ? $data[0]['login'] : null);
+      $data = $db->query('SELECT login, contest_id FROM users WHERE id = ?', Array($id));
+      return new UserDB(!empty($data) ? $data[0]['login'] : null, !empty($data)? $data[0]['contest_id'] : null);
    }
 
-   function __construct($login = false)
+   function __construct($login = false, $contest_id)
    {
       if (!$login) {
          $this->isExist = false;
          return;
       }
       global $db;
-      $query = 'SELECT id, login, name, surname, teacher, phone, age, address, school, password, salt FROM users WHERE login = ?';
-      $data = $db->Query($query, Array($login));
+      $query = 'SELECT id, login, name, surname, teacher, phone, age, address, school, password, salt, contest_id FROM users WHERE login = ? AND contest_id = ?';
+      $data = $db->Query($query, Array($login, $contest_id));
       $this->login = $login;
       $this->isExist = !empty($data);
       if (!$this->isExist) {
@@ -73,7 +60,7 @@ class UserDB
       global $db;
       $query =
          'UPDATE users
-         SET login = ?, name = ?, surname = ?, teacher = ?, phone = ?, age = ?, address = ?, school = ?, password = ?, salt = ?
+         SET login = ?, name = ?, surname = ?, teacher = ?, phone = ?, age = ?, address = ?, school = ?, password = ?, salt = ?, contest_id = ?
          WHERE id = ?';
       $newValues = Array(
          $this->login,
@@ -86,6 +73,7 @@ class UserDB
          $this->school,
          $this->password,
          $this->salt,
+         $this->contest_id,
          $this->id
       );
       $db->Query($query, $newValues, false);
@@ -95,8 +83,8 @@ class UserDB
    {
       global $db;
       $query =
-         'INSERT INTO users(login, name, surname, teacher, phone, age, address, school, password, salt)
-         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+         'INSERT INTO users(login, name, surname, teacher, phone, age, address, school, password, salt, contest_id)
+         VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
       $values = Array(
          $this->login,
          $this->name,
@@ -107,7 +95,8 @@ class UserDB
          $this->address,
          $this->school,
          $this->password,
-         $this->salt
+         $this->salt,
+         $this->contest_id
       );
       $db->Query($query, $values, false);
    }

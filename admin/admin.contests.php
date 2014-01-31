@@ -31,7 +31,8 @@ if (isset($_POST['enable_competitive'])) {
       HandleAdminData($_contest, $post, 'contests/add_category');
 
    }
-} elseif ($addCats = isset($request[2]) && $request[2] == 'add_category' && $addCatSession) {
+} elseif ($addCats = isset($request[2]) && $request[2] == 'add_category') {
+  if (!$addCatSession) header('Location: /admin/contests');
   $lastContestID = !empty($lastContest) ? $lastContest['contest_id'] : null;
   $smarty->assign('categories_options', $_category->MakeSelectTree($lastContestID))
          ->assign('category_tree', $_category->MakeAdminTree($lastContestID));

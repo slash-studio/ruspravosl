@@ -15,6 +15,7 @@ define('ERROR_FORM_FILL', 'Некорректно заполнена форма.
 define('ERROR_PASS_LEN', 'Пароль должен быть длиннее ' . (PASS_LEN - 1) . '-ти символов.');
 define('ERROR_LOGIN_LEN', 'Логин должен быть длиннее ' . (LOGIN_LEN - 1) . '-ти символов.');
 define('ERROR_AGE', 'Возраст должен быть положительным числом.');
+define('ERROR_AGE_RANGE', 'Возраст не может быть меньше 8 или больше 30.');
 define('ERROR_CONTACT_PHONE', 'Введен неверный номер телефона');
 
 //admin settings

@@ -28,7 +28,7 @@ $(function(){
             //Add uploaded file to list
             $btn = this._settings.data.category_id;
 			$name = this._settings.data.work_name;
-            if(response != "error") {			   
+            if(response != "error") {
                file_name = response;
                $.post(
                   "/includes/rename.php",
@@ -47,9 +47,7 @@ $(function(){
     });
 
    $(document).on('click', '.imgs ul li button', function(){
-      
 	  $button = $(this);
-	  
       $.post(
          "/includes/handler.Image.php",
          {
@@ -57,7 +55,7 @@ $(function(){
             mode: 'Delete',
             params:
                   {
-                     images_id: $button.attr('data')
+                     id: $button.attr('data')
                   }
          },
          function(data) {
@@ -66,7 +64,8 @@ $(function(){
             } else {
                alert(data.message);
             }
-         }, "json"
+         },
+         "json"
       );
    });
 });

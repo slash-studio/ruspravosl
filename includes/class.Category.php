@@ -198,9 +198,10 @@ class Category extends Entity
       return Array(isset($tree) ? $buildTree($tree, $this) : '', $resName, $resPName);
    }
 
-   public function MakeAccountTree($id = -1)
+   public function MakeAccountTree($contest_id, $id = -1)
    {
-      list($tree, $names) = $this->SetTreeParams();
+      if (empty($contest_id)) return '';
+      list($tree, $names) = $this->SetTreeParams($contest_id);
       $buildTree = function ($t, $th) use (&$buildTree, $names) {
          if (!count($t)) {
             return Array();
@@ -227,6 +228,15 @@ class Category extends Entity
             foreach ($images as $image) {
                if ($subcat['categories_id'] == $image['images_category_id']) {
                   $subcat['imgs_info'][] = $image;
+               }
+            }
+         }
+         if (empty($roots[$k]['subcat'])) {
+            $roots[$k]['subcat'][0] = $roots[$k]['info'];
+            $roots[$k]['subcat'][0]['imgs_info'] = Array();
+            foreach ($images as $image) {
+               if ($roots[$k]['subcat'][0]['categories_id'] == $image['images_category_id']) {
+                  $roots[$k]['subcat'][0]['imgs_info'][] = $image;
                }
             }
          }

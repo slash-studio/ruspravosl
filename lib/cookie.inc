@@ -68,9 +68,9 @@ class Cookie
       setcookie(self::$cookiename, "", 0, self::$cookiepath, self::$cookiedomain);
    }
 
-   public function Validate()
+   public function Validate($contest_id)
    {
-      $user = UserDB::FindByLogin($this->login);
+      $user = UserDB::FindByLogin($this->login, $contest_id);
       if (!$user->isExist || $user->password != $this->pass) throw new CookieException();
    }
 
