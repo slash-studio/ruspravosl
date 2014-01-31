@@ -22,7 +22,7 @@ switch ($request[0]) {
       break;
 
    case 'success_reg':
-      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/success_reg.php';
+      $smarty->display('success_reg.tpl');
       break;
 
    case 'profile':
@@ -37,6 +37,14 @@ switch ($request[0]) {
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Jury.php';
       $smarty->assign('jury', $_jury->GetAll())
              ->display('jury.tpl');
+      break;
+
+   case 'archive':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/archive.php';
+      break;
+
+   case 'winners':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/404.php';
       break;
 
    case 'admin':
@@ -59,7 +67,7 @@ switch ($request[0]) {
             require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.jury.php';
             break;
 
-         case 'main_news':
+         case 'texts':
             require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.text.php';
             break;
 
@@ -70,8 +78,13 @@ switch ($request[0]) {
          case 'photos':
             require_once $_SERVER['DOCUMENT_ROOT'] . '/admin/admin.photos.php';
             break;
+
+         default:
+            header('Location: /admin/texts');
+            break;
       }
       break;
+
    case '404':
    default:
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/404.php';

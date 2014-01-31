@@ -13,6 +13,8 @@ CREATE TABLE IF NOT EXISTS `users` (
    `login`       VARCHAR(45)  NOT NULL,
    `name`        VARCHAR(80)  NOT NULL,
    `surname`     VARCHAR(80)  NOT NULL,
+   `teacher`     VARCHAR(120) NOT NULL,
+   `phone`       VARCHAR(20)  NOT NULL,
    `age`         INT          NOT NULL,
    `address`     VARCHAR(100) NOT NULL,
    `school`      VARCHAR(80)  NOT NULL,
@@ -29,16 +31,19 @@ CREATE TABLE IF NOT EXISTS `jury` (
    PRIMARY KEY(`id`)
 );
 
-CREATE TABLE IF NOT EXISTS `main_news` (
+CREATE TABLE IF NOT EXISTS `texts` (
    `id`        INT  NOT NULL AUTO_INCREMENT,
    `text_head` TEXT NOT NULL,
    `text_body` TEXT NOT NULL,
    PRIMARY KEY(`id`)
 );
 
-INSERT INTO `main_news`(`text_head`, `text_body`) VALUES
+INSERT INTO `texts`(`text_head`, `text_body`) VALUES
    ('Конкурс начался!', 'Конкурс предусматривает два этапа. В ноябре во всех военных округах пройдет первый отборочный тур. Второй тур и заключительный концерт лауреатов конкурса состоятся в Москве в сентябре будущего года. Для каждого военного оркестра обязательным является исполнение Государственного гимна России, а также ряда других произведений - "Славься" М. Глинки, "Развод караулов" В. Павлова, "Красная заря" С. Чернецкого, военных маршей и плац-концертов.');
 
+
+INSERT INTO `texts`(`text_head`, `text_body`) VALUES
+   ('Регистрация', 'Для участия в конкурсе сфотографируйте свои работы либо сделайте скан-копии рисунков. Заполните поля регистрационной формы. Не забудьте указать телефон родителей или учителя, чтобы организаторы конкурса могли связаться с вашими представителями. Получите собственный аккаунт. Это ваша страничка в конкурсе, где вы можете выложить фотографии своих работ. Не стоит ждать, что жюри примет решение на следующий день. Жюри будет работать до 18 апреля 2014 года. До этого срока под фотографией своей работой вы увидите принята она к следующему этапу конкурса или отклонена. Официально результаты будут объявлены 24 мая 2014 года.');
 CREATE TABLE IF NOT EXISTS `categories` (
    `id`        INT         NOT NULL AUTO_INCREMENT,
    `name`      VARCHAR(80) NOT NULL,

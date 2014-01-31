@@ -219,7 +219,7 @@ class Entity
 
    public function GetById($id)
    {
-      $this->CheckSearch($lang);
+      $this->CheckSearch();
       $this->search->AddClause(PackParam(static::TABLE, $this->GetFieldByName('id'), true, 'AND'), $id);
       $result = $this->GetAll();
       $this->search->RemoveLastClause();

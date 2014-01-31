@@ -23,7 +23,9 @@
     {if $acc_self}<span class="info">Логин: <b>{$login}</b></span>{/if}
     <span class="info">Имя: <b>{$fullname}</b></span>
     <span class="info">Возраст: <b>{$age}</b></span>
+    {if $acc_self}<span class="info">Телефон: <b>{$phone}</b></span>{/if}
     {if $acc_self}<span class="info">Адрес: <b>{$address}</b></span>{/if}
+    <span class="info">Учитель: <b>{$teacher}</b></span>
     <span class="info">Школа: <b>{$school}</b></span>
     <div class="imgs">
       <h2>Загруженные фотографии</h2>

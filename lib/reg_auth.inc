@@ -34,6 +34,8 @@ class Registration
       $password,
       $name,
       $surname,
+      $teacher,
+      $phone,
       $age,
       $address,
       $school
@@ -41,7 +43,6 @@ class Registration
    {
       global $db, $data_h;
       $user = new UserDB($login);
-
       $user->salt = Encryption::generateRandomString();
       $user->password = $password;
 
@@ -51,6 +52,8 @@ class Registration
          $user->name    = $name;
          $user->school  = $school;
          $user->surname = $surname;
+         $user->teacher = $teacher;
+         $user->phone   = $phone;
          $user->age     = $age;
          $user->address = $address;
          $user->Insert();

@@ -1,9 +1,9 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Entity.php';
 
-class MainNews extends Entity
+class Texts extends Entity
 {
-   const TABLE = 'main_news';
+   const TABLE = 'texts';
 
    public function __construct()
    {
@@ -11,7 +11,7 @@ class MainNews extends Entity
       $this->fields = Array(
          new Field(
             'id',
-            1,
+            null,
             false
          ),
          new Field(
@@ -30,5 +30,5 @@ class MainNews extends Entity
    }
 }
 
-$_mainNews = new MainNews();
+$_texts = new Texts();
 ?>
