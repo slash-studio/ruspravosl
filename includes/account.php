@@ -27,6 +27,6 @@ $smarty->assign('cats', $_category->MakeAccountTree($user->id))
        ->assign('age', $user->age)
        ->assign('address', $user->address)
        ->assign('school', $user->school)
-	    ->assign('acc_self', $accSelf)
+	   ->assign('acc_self', $accSelf)
        ->display('account.tpl');
 ?>

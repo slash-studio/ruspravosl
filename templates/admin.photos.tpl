@@ -26,7 +26,8 @@
       {foreach from=$images item=img}
         <li>
           <a href="/includes/uploads/{$img.images_id}_b.jpg" class="group1 block"><img src="/includes/uploads/{$img.images_id}_s.jpg" /></a>
-          <a href="/profile/{$img.images_user_id}" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age})</a>
+          <div class="name">"{$img.images_name}"</div>
+		  <a href="/profile/{$img.images_user_id}" class="user">{$users[$img.images_user_id].users_name} {$users[$img.images_user_id].users_surname} ({$users[$img.images_user_id].users_age} лет)</a>
 		  <div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{elseif $img.images_status == 3}<span class="green">Победитель!</span>{/if}</div>
           <div class="admin">
              <div class="panel">

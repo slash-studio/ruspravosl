@@ -42,6 +42,7 @@
 						{if $acc_self}title="{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}Работа принята!{elseif $img.images_status == 2}Работа отклонена!{/if}{/if}">
 				<img src="/includes/uploads/{$img.images_id}_s.jpg" />
 			</a>
+			<div class="name">"{$img.images_name}"</div>
 			{if $acc_self}<div class="status_bar">{if $img.images_status == 0}Работа не проверена{elseif $img.images_status == 1}<span class="green">Работа принята!</span>{elseif $img.images_status == 2}<span class="red">Работа отклонена!</span>{elseif $img.images_status == 3}<span class="green">Победитель!</span>{/if}</div>{/if}
 			{if $acc_self}<button class="x" data="{$img.images_id}">x</button>{/if}
             </li>

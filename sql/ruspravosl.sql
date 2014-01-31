@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `images` (
    `id`          INT(11) NOT NULL AUTO_INCREMENT,
    `user_id`     INT(11) NOT NULL,
    `category_id` INT     NOT NULL,
+   `name`        VARCHAR(50) NOT NULL,
    `status`      INT(1)  NOT NULL DEFAULT 0,
    PRIMARY KEY (`id`),
    FOREIGN KEY (`user_id`)     REFERENCES `users`(`id`),

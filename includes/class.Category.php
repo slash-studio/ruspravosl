@@ -216,7 +216,7 @@ class Category extends Entity
             $subcat['imgs_info'] = Array();
             foreach ($images as $image) {
                if ($subcat['categories_id'] == $image['images_category_id']) {
-                  $subcat['imgs_info'][] = Array('images_id' => $image['images_id'], 'images_status' => $image['images_status']);
+                  $subcat['imgs_info'][] = $image;
                }
             }
          }
