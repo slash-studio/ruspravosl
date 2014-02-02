@@ -74,7 +74,6 @@ class AuthorizedUser
    {
       global $db;
       $user = UserDB::FindByLogin($login, $contest_id);
-      print_r($user);
       if (!$user->isExist) {
          throw new Exception(ERROR_LOGIN);
       }

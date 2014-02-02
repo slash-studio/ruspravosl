@@ -71,7 +71,10 @@ class Cookie
    public function Validate($contest_id)
    {
       $user = UserDB::FindByLogin($this->login, $contest_id);
-      if (!$user->isExist || $user->password != $this->pass) throw new CookieException();
+      if (!$user->isExist || $user->password != $this->pass) {
+         $this->Remove();
+         throw new CookieException();
+      }
    }
 
 }

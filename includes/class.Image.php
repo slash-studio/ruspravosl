@@ -90,7 +90,24 @@ class Image extends Entity
          );
       $this->selectFields = SQL::GetListFieldsForSelect($fields);
       $join = Array(User::TABLE => Array(null, Array('user_id', 'id')));
-      $this->search = new Search(self::TABLE, Array(), Array(), $join, Array(), Array(0, 4));
+      $this->search = new Search(
+         self::TABLE,
+         Array(
+            PackParam(
+               self::TABLE,
+               $this->GetFieldByName('status'),
+               false,
+               '',
+               '',
+               '',
+               '!='
+            )
+         ),
+         Array(2),
+         $join,
+         Array(),
+         Array(0, 4)
+      );
       $this->AddOrder('rand', OT_RAND);
       return
          $this->SelectWithLang(
@@ -136,10 +153,69 @@ class Image extends Entity
       return $result;
    }
 
+   public function GetWinnersImages($contest_id)
+   {
+      unset($this->search);
+
+      global $_user;
+
+      $whereFields = Array();
+      $whereParams = Array();
+
+      $whereParams[] = 3;
+      $whereFields[] = PackParam(static::TABLE, $this->GetFieldByName('status'));
+      $whereParams[] = $contest_id;
+      $whereFields[] = PackParam(User::TABLE, $_user->GetFieldByName('contest_id'), true, 'AND');
+
+      $this->search = new Search(
+         static::TABLE,
+         $whereFields,
+         $whereParams,
+         Array(
+            User::TABLE => Array(null, Array('user_id', 'id'))
+         )
+      );
+
+      $userAgeField     = $_user->GetFieldByName('age');
+      $userNameField    = $_user->GetFieldByName('name');
+      $userSurnameField = $_user->GetFieldByName('surname');
+      $fields            =
+         array_merge(
+            SQL::PrepareFieldsForSelect(
+               static::TABLE,
+               $this->fields
+            ),
+            SQL::PrepareFieldsForSelect(
+               User::TABLE,
+               Array($userAgeField, $userNameField, $userSurnameField)
+            )
+         );
+
+      $this->UnsetSelectValues();
+
+      $this->selectTables =
+         Array(
+            static::TABLE   => $this->fields,
+            User::TABLE     => Array($userAgeField, $userNameField, $userSurnameField)
+         );
+      $this->selectFields = SQL::GetListFieldsForSelect($fields);
+
+      $result =
+         $this->SelectWithLang(
+            $this->selectTables,
+            $this->selectFields,
+            $this->search->GetClause(),
+            $this->search->GetParams(),
+            $this->search->GetJoins(),
+            $this->search->GetLimit()
+         );
+      return $result;
+   }
+
    public function Delete($id)
    {
       parent::Delete($id);
-	  @unlink($_SERVER['DOCUMENT_ROOT'] . '/includes/uploads/' . $id . '.jpg');
+      @unlink($_SERVER['DOCUMENT_ROOT'] . '/includes/uploads/' . $id . '.jpg');
       @unlink($_SERVER['DOCUMENT_ROOT'] . '/includes/uploads/' . $id . '_b.jpg');
       @unlink($_SERVER['DOCUMENT_ROOT'] . '/includes/uploads/' . $id . '_s.jpg');
    }

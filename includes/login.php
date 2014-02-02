@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
              ->validateLogin($login, ERROR_LOGIN)
              ->validatePassword($pass, ERROR_LOGIN);
       AuthorizedUser::Login($login, $pass, $contestID);
-      // header("Location: $fromUri");
+      header("Location: $fromUri");
    } catch (Exception $e) {
       $isException = true;
       $errorMsg = $e->getMessage();

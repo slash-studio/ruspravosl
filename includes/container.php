@@ -24,7 +24,8 @@ $contest_status = !empty($lastContest) ? $lastContest['contest_status'] : null;
 $contestID = !empty($lastContest) ? $lastContest['contest_id'] : -1;
 $_contest->Reset();
 
-$smarty->assign('isLogin', Authentification::CheckCredentials($contestID))
+$smarty->assign('ages', Array('8 - 12', '13 - 18', '19 - 30'))
+       ->assign('isLogin', Authentification::CheckCredentials($contestID))
 	    ->assign('competitiveStatus', $contest_status);
 
 ?>

@@ -1,0 +1,43 @@
+#top_block {
+	width: 600px;
+	margin: 35px auto 0;
+}
+
+#top_block h1 {
+	margin-bottom: 50px;
+}
+
+#top_block ul li {
+	margin-bottom: 20px;
+}
+
+#top_block ul li h2 {
+	font-size: 140%;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+.imgs h2 {
+	font-size: 180%;
+	font-family: Georgia;
+	margin-bottom: 30px;
+}
+
+
+.imgs h3 {
+	font-family: Georgia;
+}
+
+.imgs h3, .imgs h4 {
+	margin-bottom: 10px;
+	font-style: italic;
+}
+
+.imgs h3 {
+	font-size: 130%;
+}
+
+.imgs h4{
+	font-size: 110%;
+	margin-bottom: 30px;
+}

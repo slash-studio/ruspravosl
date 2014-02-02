@@ -79,10 +79,8 @@ class User extends Entity
       return $result;
    }
 
-   public function GetCatalogView($contest_id, $category = null, $age = -1)
+   private function BuildCatalogStructure($images, $age)
    {
-      global $_image;
-      $images = $_image->CreateSearchForCatalog($category, $contest_id)->GetAll();
       $users = $this->GetAll();
       $result   = Array();
       $usersRes = Array();
@@ -97,6 +95,34 @@ class User extends Entity
          }
       }
       return Array($result, $usersRes);
+   }
+
+   public function GetAdminCatalogView($contest_id, $category = null, $age = -1)
+   {
+      global $_image;
+      $images = $_image->CreateSearchForCatalog($category, $contest_id)->GetAll();
+      return $this->BuildCatalogStructure($images, $age);
+   }
+
+   public function GetCatalogView($contest_id, $category = null, $age = -1)
+   {
+      global $_image;
+      $_image->CreateSearchForCatalog($category, $contest_id)
+             ->search->AddClause(
+                  PackParam(
+                     Image::TABLE,
+                     $_image->GetFieldByName('status'),
+                     true,
+                     'AND',
+                     '',
+                     '',
+                     '!='
+                  ),
+                  2
+               );
+      $images = $_image->GetAll();
+      $_image->search->RemoveLastClause();
+      return $this->BuildCatalogStructure($images, $age);
    }
 }
 
