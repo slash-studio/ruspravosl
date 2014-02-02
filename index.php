@@ -32,6 +32,10 @@ switch ($request[0]) {
    case 'all_works': case 'category':
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/all_works.php';
       break;
+	  
+   case 'winners':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/winners.php';
+      break;
 
    case 'jury':
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Jury.php';

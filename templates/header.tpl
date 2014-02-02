@@ -18,7 +18,7 @@
       <a href="/archiv">Архив</a>
     </li>
 	<li>
-      <a href="/winers">Победители</a>
+      <a href="/winners">Победители</a>
     </li>
     </ul>
   </nav>
