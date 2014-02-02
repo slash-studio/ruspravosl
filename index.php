@@ -36,6 +36,10 @@ switch ($request[0]) {
    case 'winners':
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/winners.php';
       break;
+	  
+   case 'archive':
+      require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/archive.php';
+      break;
 
    case 'jury':
       require_once $_SERVER['DOCUMENT_ROOT'] . '/includes/class.Jury.php';

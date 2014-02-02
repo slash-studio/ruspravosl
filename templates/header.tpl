@@ -15,7 +15,7 @@
       <a href="/jury">Жюри</a>
     </li>
 	<li>
-      <a href="/archiv">Архив</a>
+      <a href="/archive">Архив</a>
     </li>
 	<li>
       <a href="/winners">Победители</a>
