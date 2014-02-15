@@ -11,7 +11,7 @@
 	{literal}
 	$(document).ready(function(){
 		$(".group1").colorbox({rel:'group1'});
-	});	
+	});
 	{/literal}
   </script>
   {if $acc_self == 1}<script src="/js/ajaxupload.3.5.js"></script>{/if}
@@ -24,10 +24,10 @@
     {if $acc_self}<span class="info">Логин: <b>{$login}</b></span>{/if}
     <span class="info">Имя: <b>{$fullname}</b></span>
     <span class="info">Возраст: <b>{$age}</b></span>
-    {if $acc_self}<span class="info">Телефон: <b>{$phone}</b></span>{/if}
-    {if $acc_self}<span class="info">Адрес: <b>{$address}</b></span>{/if}
-    {if $acc_self}<span class="info">Ваш педагог: <b>{$teacher}</b></span>{/if}
-    {if $acc_self}<span class="info">Телефон: <b>{$phone}</b></span>{/if}
+    {if $acc_self || $isAdmin}<span class="info">Телефон: <b>{$phone}</b></span>{/if}
+    {if $acc_self || $isAdmin}<span class="info">Адрес: <b>{$address}</b></span>{/if}
+    {if $acc_self || $isAdmin}<span class="info">Ваш педагог: <b>{$teacher}</b></span>{/if}
+    {if $acc_self || $isAdmin}<span class="info">Телефон: <b>{$phone}</b></span>{/if}
     <span class="info">Место учебы: <b>{$school}</b></span>
     <div class="imgs">
       <h2>Загруженные фотографии</h2>

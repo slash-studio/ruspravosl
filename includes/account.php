@@ -18,10 +18,13 @@ if (empty($userId)) {
    }
    $accSelf = $userAuth->isExist && $userAuth->id == $userId;
 }
+$admin_login = !empty($_SESSION['admin_login']) ? $_SESSION['admin_login'] : '';
+$admin_pass  = !empty($_SESSION['admin_pass']) ? $_SESSION['admin_pass'] : '';
 $smarty->assign('cats', $_category->MakeAccountTree($lastContest['contest_id'], $user->id))
        ->assign('id', $user->id)
        ->assign('login', $user->login)
        ->assign('fullname', $user->name . ' ' . $user->surname)
+       ->assign('isAdmin', $admin_login == ADMIN_LOGIN && $admin_pass == ADMIN_PASS)
        ->assign('age', $user->age)
        ->assign('address', $user->address)
        ->assign('school', $user->school)
