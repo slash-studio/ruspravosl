@@ -1,4 +1,5 @@
 {extends file='admin.tpl'}
+{block name='title' append} - Категории{/block}
 {block name='links' append}
   <script src="/js/jquery.jstree.js"></script>
   <script src="/js/admin.categories.js"></script>

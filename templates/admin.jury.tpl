@@ -1,4 +1,5 @@
 {extends file='admin.tpl'}
+{block name='title' append} - Жюри{/block}
 {block name="div.main"}
 <div id="top_block">
   <h1>Редактирование Жюри</h1>

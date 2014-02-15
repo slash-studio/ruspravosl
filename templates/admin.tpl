@@ -1,4 +1,5 @@
 {extends file='html.tpl'}
+{block name='title' append} - Админка{/block}
 {block name='links' append}
     <link href="/css/admin.css" rel="stylesheet" />
 	<link href="/css/main.css" rel="stylesheet" />

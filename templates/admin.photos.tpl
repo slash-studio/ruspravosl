@@ -1,4 +1,5 @@
 {extends file='admin.tpl'}
+{block name='title' append} - Просмотр работ{/block}
 {block name='links' append}
   <link href="/css/images.css" rel="stylesheet" />
   <link href="/css/admin_photos.css" rel="stylesheet" />
@@ -19,7 +20,7 @@
       <h1>{if isset($mainCategoryName)}{$mainCategoryName}{else}Все работы{/if}</h1>
       {if isset($subCategoryName)}<h2>{$subCategoryName}</h2>
         {if 0<=$age && $age<=2}
-          <h3>{if $age==0}8 - 12{elseif $age==1}13 - 18{elseif $age==2}19 - 30{/if} лет</h3>
+          <h3>{if $age==0}до 9{elseif $age==1}9 - 12{elseif $age==2}13 - 17{/if} лет</h3>
         {/if}
       {/if}
       <ul>

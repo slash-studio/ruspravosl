@@ -39,3 +39,7 @@
 .imgs ul li {
 	text-align: center;
 }
+
+.imgs ul li:first-child {
+ 	margin-left: 0; 
+}
