@@ -70,3 +70,10 @@ small.red {
 	color: red;
 	margin: 20px 0 10px;
 }
+
+p.db_error {
+  display: block;
+  margin: 15px 0;
+  color: red;
+  font-weight: bold;
+}

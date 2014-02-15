@@ -4,7 +4,7 @@
     <ul>
       <li><a href="/">Главная</a></li>
       <li><a href="/all_works">Все работы</a></li>
-      <li><a href="/">Положение</a></li>
+      <li><a href="/contest_rules.docx">Положение</a></li>
       <li><a href="/jury">Жюри</a></li>
       <li><a href="/archive">Архив</a></li>
       {if isset($competitiveStatus)}<li><a href="/winners">Победители</a></li>{/if}

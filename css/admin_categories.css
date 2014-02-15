@@ -23,10 +23,6 @@ button {
 	width: 400px;
 }
 
-#edit-box p {
-	margin: 10px 0;
-}
-
 #category_form label {
 	display: block;
 	margin: 5px 0;
@@ -35,4 +31,10 @@ button {
 #category_form select {
 	padding: 3px;
 	border: 1px #bbb solid;
+}
+
+div.edit_radio label {
+	display: inline-block;
+	margin: 0;
+	font-weight: normal;
 }

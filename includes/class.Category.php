@@ -184,8 +184,8 @@ class Category extends Entity
                $id = $names[$k][$th->ToPrfxNm('id')];
                $href = $isAdminMenu ? '/admin/photos' : '/category';
                $next_node = "<ul class='dropdown_block'>"
-                          . "<li><a href='$href/$id/0'>до 8 лет</a></li>"
-                          . "<li><a href='$href/$id/1'>8 - 12 лет</a></li>"
+                          . "<li><a href='$href/$id/0'>до 9 лет</a></li>"
+                          . "<li><a href='$href/$id/1'>9 - 12 лет</a></li>"
                           . "<li><a href='$href/$id/2'>13 - 17 лет</a></li></ul>";
             }
             $result .= $new_node . $next_node . '</li>';
@@ -257,9 +257,9 @@ class Category extends Entity
             if (empty($next_node)) {
                $id = $names[$k][$th->ToPrfxNm('id')];
                $next_node = "<ul class='dropdown_block'>"
-                          . "<li><a href='/archive/$contest_id/$id/0'>8 - 12 лет</a></li>"
-                          . "<li><a href='/archive/$contest_id/$id/1'>13 - 18 лет</a></li>"
-                          . "<li><a href='/archive/$contest_id/$id/2'>19 - 30 лет</a></li></ul>";
+                          . "<li><a href='/archive/$contest_id/$id/0'>до 9 лет</a></li>"
+                          . "<li><a href='/archive/$contest_id/$id/1'>9 - 12 лет</a></li>"
+                          . "<li><a href='/archive/$contest_id/$id/2'>13 - 17 лет</a></li></ul>";
             }
             $result .= $new_node . $next_node . '</li>';
          }

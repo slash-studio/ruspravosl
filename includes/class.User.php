@@ -70,9 +70,9 @@ class User extends Entity
    {
       $result = true;
       if ($age == 0) {
-         $result =  1 <= $userAge && $userAge <= 7;
+         $result =  1 <= $userAge && $userAge <= 8;
       } elseif ($age == 1) {
-         $result = 8 <= $userAge && $userAge <= 12;
+         $result =  9 <= $userAge && $userAge <= 12;
       } elseif ($age == 2) {
          $result =  13 <= $userAge && $userAge <= 17;
       }

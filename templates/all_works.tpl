@@ -1,4 +1,5 @@
 {extends file='page.tpl'}
+{block name='title' append} - Все работы{/block}
 {block name='links' append}
   <link href="/css/header.css" rel="stylesheet" />
   <link href="/css/footer.css" rel="stylesheet" />
@@ -21,7 +22,7 @@
       <h1>{if isset($mainCategoryName)}{$mainCategoryName}{else}Все работы{/if}</h1>
       {if isset($subCategoryName)}<h2>{$subCategoryName}</h2>
         {if 0<=$age && $age<=2}
-          <h3>{if $age==0}до 8{elseif $age==1}8 - 12{elseif $age==2}13 - 17{/if} лет</h3>
+          <h3>{if $age==0}до 9{elseif $age==1}9 - 12{elseif $age==2}13 - 17{/if} лет</h3>
         {/if}
       {/if}
       <ul>

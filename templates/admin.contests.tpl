@@ -1,4 +1,5 @@
 {extends file='admin.tpl'}
+{block name='title' append} - Конкурсы{/block}
 {block name='links' append}
   <link href="/css/admin_contests.css" rel="stylesheet"/>
   <script src="/js/jquery.jstree.js"></script>

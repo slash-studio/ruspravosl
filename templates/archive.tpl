@@ -1,4 +1,5 @@
 {extends file='page.tpl'}
+{block name='title' append} - Архив{/block}
 {block name='links' append}
   <link href="/css/header.css" rel="stylesheet" />
   <link href="/css/footer.css" rel="stylesheet" />
@@ -49,7 +50,7 @@
      <h1>{if isset($mainCategoryName)}{$mainCategoryName}{elseif isset($contID)}{$contestName}{else}Архив{/if}</h1>
       {if isset($subCategoryName)}<h3>{$subCategoryName}</h3>
         {if 0<=$age && $age<=2}
-          <h4>{if $age==0}до 8{elseif $age==1}8 - 12{elseif $age==2}13 - 17{/if} лет</h4>
+          <h4>{if $age==0}до 9{elseif $age==1}9 - 12{elseif $age==2}13 - 17{/if} лет</h4>
         {/if}
       {/if}
       <ul>
