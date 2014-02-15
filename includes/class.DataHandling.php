@@ -16,7 +16,7 @@
 
       public function validateAge($age, $message = ERROR_AGE_RANGE)
       {
-         if ($age > 31 || $age < 8) {
+         if ($age > 17 || $age < 1) {
             throw new Exception($message);
          }
          return $this;

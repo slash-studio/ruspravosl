@@ -1,5 +1,6 @@
 RewriteEngine on
 
+RewriteCond %{REQUEST_FILENAME} !^/contest_rules.docx
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule (.*) /index.php [L]
 

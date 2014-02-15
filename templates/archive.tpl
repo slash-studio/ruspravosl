@@ -49,7 +49,7 @@
      <h1>{if isset($mainCategoryName)}{$mainCategoryName}{elseif isset($contID)}{$contestName}{else}Архив{/if}</h1>
       {if isset($subCategoryName)}<h3>{$subCategoryName}</h3>
         {if 0<=$age && $age<=2}
-          <h4>{if $age==0}8 - 12{elseif $age==1}13 - 18{elseif $age==2}19 - 30{/if} лет</h4>
+          <h4>{if $age==0}до 8{elseif $age==1}8 - 12{elseif $age==2}13 - 17{/if} лет</h4>
         {/if}
       {/if}
       <ul>

@@ -7,7 +7,6 @@ GRANT ALL
 ON `ruspravosl`.*
 TO `smite`@localhost IDENTIFIED BY 'smite107';
 
-
 CREATE TABLE IF NOT EXISTS `contest` (
    `id`           INT(11)      NOT NULL AUTO_INCREMENT,
    `name`         VARCHAR(150) NOT NULL,
@@ -97,8 +96,7 @@ FOR EACH ROW BEGIN
       (last_cat_id + 3, 'Моя Родина', last_cat_id + 1, CONCAT(last_cat_id + 3, '.', last_cat_id + 1, '.'), new.id),
       (last_cat_id + 4, 'Декоративно-прикладное искусство', last_cat_id + 4, CONCAT(last_cat_id + 4, '.'), new.id),
       (last_cat_id + 5, 'Традиции православной культуры', last_cat_id + 5, CONCAT(last_cat_id + 5, '.', last_cat_id + 4, '.'), new.id);
-END
-//
+END//
 
 DROP TRIGGER IF EXISTS `insert_categories`;
 CREATE TRIGGER `insert_categories` BEFORE INSERT ON `categories`
