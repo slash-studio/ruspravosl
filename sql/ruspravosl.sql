@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 DROP DATABASE IF EXISTS `ruspravosl`;
 CREATE DATABASE `ruspravosl` DEFAULT CHARSET utf8;
 
@@ -6,6 +7,8 @@ use `ruspravosl`;
 GRANT ALL
 ON `ruspravosl`.*
 TO `smite`@localhost IDENTIFIED BY 'smite107';
+=======
+>>>>>>> ааа
 
 CREATE TABLE IF NOT EXISTS `contest` (
    `id`           INT(11)      NOT NULL AUTO_INCREMENT,
@@ -80,6 +83,7 @@ CREATE TABLE IF NOT EXISTS `competitive_button` (
 );
 
 INSERT INTO `competitive_button`(`status`) VALUES(0);
+<<<<<<< HEAD
 
 DELIMITER //
 
@@ -168,3 +172,5 @@ BEGIN
 END$$
 
 DELIMITER ;
+=======
+>>>>>>> ааа

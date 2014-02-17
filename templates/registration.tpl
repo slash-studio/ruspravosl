@@ -57,8 +57,8 @@
         </div>
         <div>
           <label for="school">Место учебы:</label>
-          <small>Полное наименование учебного заведения и его адрес.</small>
-          <input id="school" name="school" value="{$regInfo.school|default:''}"/>
+          <small>Сокращенное наименование учебного заведения.</small>
+          <input id="school" name="school" placeholder='Например: МБОУ "СОШ № 22" г. Владивостока' value="{$regInfo.school|default:''}"/>
         </div>
         <div><button id="reg" name="submit" value="submit">Зарегистрироваться</button></div>
       </div>
